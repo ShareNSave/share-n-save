@@ -1,0 +1,19 @@
+﻿@if (!string.IsNullOrEmpty(Content.Data.Image))
+{
+    <figure class="page-image">
+        <img src="@Content.Data.Image" class="img-@Content.Data.ImageDisplayType.ToString().ToLower()" alt="@Content.Data.Title" />
+    </figure>
+}
+
+@{
+    bool showTitle = Content.Data.ShowTitle;
+}
+
+@if (showTitle)
+{
+    @Content.Register.Title().Container("Content").Configure(e => e.CssClass = "entry-title").Display()
+}
+
+<div class="page-text">
+    @Content.Display.Text
+</div>

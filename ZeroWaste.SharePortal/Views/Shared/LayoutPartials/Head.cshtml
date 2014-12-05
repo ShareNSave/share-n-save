@@ -1,0 +1,35 @@
+﻿<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<title>@(Content.Has.SeoTitle ? Content.Data.SeoTitle : Content.Data.Title)</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+@{
+    N2.Web.Mvc.RenderHelper.DefaultEditable = false;
+}
+@Content.Display.MetaAuthor
+@Content.Display.MetaKeywords
+@Content.Display.MetaDescription
+@{
+    N2.Web.Mvc.RenderHelper.DefaultEditable = true;
+}
+@{
+    // Render the default bundles.
+    Bundles.Reference("Content");
+    Bundles.Reference("Scripts");
+}
+
+    @Html.Partial("_html5shiv")
+
+<!-- Fav and touch icons -->
+@*<link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/Content/images/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/Content/images/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/Content/images/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="~/Content/images/apple-touch-icon-57-precomposed.png">*@
+<link rel="shortcut icon" href="~/Content/images/favicon.gif">
+<link rel="canonical" href="@(Content.Data.Url ?? Request.RawUrl)" />
+
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+
+@*@Html.RenderPartial("_html5shiv");*@

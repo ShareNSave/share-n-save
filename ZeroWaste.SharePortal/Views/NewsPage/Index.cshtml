@@ -1,0 +1,15 @@
+﻿@model ZeroWaste.SharePortal.Models.Pages.NewsPage
+@{
+    Content.Define(re =>
+    {
+        re.Title = "News page";
+        re.FreeText("ListingText", "Listing Text");
+        re.Date("PublishDate", "Publish Date");
+    });
+}
+@section ContentSection {
+    <div class="span8">
+        <h1>@Model.Title</h1>
+        @Html.Raw(Model.Text)
+    </div>
+}

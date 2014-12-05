@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Listing icons";
+    Layout = "~/Areas/Admin/Views/Shared/Admin.cshtml";
+}
+@using ZeroWaste.SharePortal.Models.Data
+@using N2.Web.UI.WebControls
+@using Telerik.Web.Mvc.UI
+@model List<ListingIcon>
+
+<h2>Listing Icons</h2>
+ 
+@*<div class="boxPoint"></div>
+<div class="togetherPopover">
+    <h2>The Workhouse</h2>
+    <img src='/Content/images/defaultpics/TogetherSharedSpace06_image.jpg' alt='The Workhouse' width='200' height='133' />
+    <p>
+        Open access printmaking workshop. The Workhouse offers artists and printmakers a place to create. The Workhouse is open to artists for the cost of $20/day per artist.  Included in this cost is access to The Workhouse facilities which includes;
+
+        Etching press  55cm x 130cm
+        Drying rack 50 tier  80cm x 120cm
+        ""Funditor"" table top proofing press  58cm x 33cm
+        Book press  30cm x 25cm
+        4 colour T-shirt carousel platen 54cm x 40cm
+        Vacuum exposure table  180cm x 130cm
+        Payne exposure lamp
+        Light Table  120cm x 90cm
+        Benches 13m x 90cm
+        Screen hinge boards
+        Mitre saw
+        Scroll saw
+        Jigsaw
+        Drill
+        Wood framing guillotine
+        V nailer
+    </p>
+    <h3>Phone:</h3>
+    0432 924 938<h3>Email:</h3>
+    <a href='mailto:jake@toothandnail.net.au'>jake@toothandnail.net.au</a>
+    <div class='connectLink'><a href='http://toothandnail.net.au/theworkhouse/' target='_blank'>Connect to us</a></div>
+</div>*@
+
+@Html.Telerik().Grid(Model).Name("Grid").Columns(columns =>
+{
+    columns.Bound(p => p.Name).Filterable(true);
+    columns.Bound(p => p.Description).Filterable(true);
+    columns.Bound(p => p.IconPath).Filterable(true);
+    columns.Template(x => string.Format("{0} | {1}", Html.ActionLink("Edit", "Edit", new { id = x.ListingIconId }, null), Html.ActionLink("Listings", "Index", "ListingManage", new { listingIconId = x.ListingIconId }, null))).Title("Operate").Width(150);
+
+}).Groupable().Pageable(paging =>paging.PageSize(25)).Filterable().Sortable().Resizable(resize => resize.Columns(true)).Scrollable(c => c.Enabled(true).Height(340));
+
+    @Html.Telerik().ScriptRegistrar()

@@ -1,0 +1,32 @@
+﻿@{
+    var showBreadcrumb = false;
+    if (Content.Current.Page != null && Content.Current.Page is N2Bootstrap.Library.Models.ContentPage)
+    {
+        showBreadcrumb = (Content.Current.Page as N2Bootstrap.Library.Models.ContentPage).ShowBreadcrumb;
+    }
+    if (!showBreadcrumb)
+    {
+        return;
+    }
+    var start = Content.Parse(Request["returnUrl"]) ?? Content.Traverse.StartPage;
+    var currentItem = Content.Current.Item;
+    var breadcrumbs = Find.EnumerateParents(currentItem, start, true).ToList();
+    breadcrumbs.Reverse();
+    if (!breadcrumbs.Any())
+    {
+        return;
+    }
+}
+<ul class="breadcrumb visible-desktop">
+    @foreach (var crumb in breadcrumbs)
+    {
+        if (crumb != currentItem)
+        {
+            <li>@Link.To(crumb) <span class="divider">/</span></li>
+        }
+        else
+        {
+            <li class="active">@((crumb as ILink).Contents)</li>
+        }
+    }
+</ul>

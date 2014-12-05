@@ -1,0 +1,42 @@
+/* Wufoo styles */
+
+
+.wufoo .info{display:none}
+
+.wufoo input.text, .wufoo textarea.textarea {
+	border:1px solid #9B9B9B;
+	padding: 4px 6px;
+}
+.wufoo label.desc, .wufoo legend.desc, label {
+font-family: 'Droid Sans Mono',sans-serif;
+margin: 0 0 3px 0;
+font-size: 13px;
+line-height: 18px;
+}
+textarea.textarea {
+	max-width: 90%;
+min-width: 90%;
+}
+
+input[type="submit"] {
+	background-image: none;
+background-color: #58585A;
+background: #58585A;
+color: #FFF;
+font-family: 'Droid Sans Mono',sans-serif;
+text-transform: uppercase;
+padding: 10px 30px;
+text-shadow: none;
+border: none;
+-webkit-border-radius: 0;
+-moz-border-radius: 0;
+border-radius: 0;
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none;
+font-size: 16px;
+cursor: pointer;
+}
+input[type="submit"]:hover {
+	background-color: #2F2F2F;
+}

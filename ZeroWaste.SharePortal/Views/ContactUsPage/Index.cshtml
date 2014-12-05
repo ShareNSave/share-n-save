@@ -1,0 +1,145 @@
+﻿@using BootstrapSupport
+@using ZeroWaste.SharePortal.Extensions
+@model ZeroWaste.SharePortal.Models.ContactUsPageModel
+
+<div class="row">
+    <div class="span4">
+        @Content.Register.Title().Container("Content").Configure(e => e.CssClass = "entry-title").Display()
+        @using (Html.BeginForm("Index", "ContactUsPage", FormMethod.Post, new { id = "contact", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <fieldset>
+                @using (Html.ControlGroupFor(m => m.Name))
+                {
+                    @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+                    <div class="controls">
+                        @Html.EditorFor(m => m.Name)
+                        @Html.ValidationMessageFor(m => m.Name, null, new { @class = "help-inline" })
+                    </div>
+                }
+                <!-- end control-group-->
+                @using (Html.ControlGroupFor(m => m.Email))
+                {
+                    @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                    <div class="controls">
+                        @Html.EditorFor(m => m.Email)
+                        @Html.ValidationMessageFor(m => m.Email, null, new { @class = "help-inline" })
+                    </div>
+                }
+                <!-- end control-group-->
+                @using (Html.ControlGroupFor(m => m.OrganisationOrGroup))
+                {
+                    @Html.LabelFor(m => m.OrganisationOrGroup, new { @class = "control-label" })
+                    <div class="controls">
+                        @Html.EditorFor(m => m.OrganisationOrGroup)
+                        @Html.ValidationMessageFor(m => m.OrganisationOrGroup, null, new { @class = "help-inline" })
+                    </div>
+                }
+                <!-- end control-group-->
+                @using (Html.ControlGroupFor(m => m.Street))
+                {
+                    @Html.LabelFor(m => m.Street, new { @class = "control-label" })
+                    <div class="controls">
+                        @Html.EditorFor(m => m.Street)
+                        @Html.ValidationMessageFor(m => m.Street, null, new { @class = "help-inline" })
+                    </div>
+                }
+                <!-- end control-group-->
+                @using (Html.ControlGroupFor(m => m.City))
+                {
+                    @Html.LabelFor(m => m.City, new { @class = "control-label" })
+                    <div class="controls">
+                        @Html.EditorFor(m => m.City)
+                        @Html.ValidationMessageFor(m => m.City, null, new { @class = "help-inline" })
+                    </div>
+                }
+                <!-- end control-group-->
+                @using (Html.ControlGroupFor(m => m.State))
+                {
+                    @Html.LabelFor(m => m.State, new { @class = "control-label" })
+                    <div class="controls">
+                        <select id="State" name="State">
+                            <option value="SA">SA</option>
+                            <option value="WA">WA</option>
+                            <option value="NT">NT</option>
+                            <option value="QLD">QLD</option>
+                            <option value="NSW">NSW</option>
+                            <option value="VIC">VIC</option>
+                            <option value="TAS">TAS</option>
+                            <option value="ACT">ACT</option>
+                        </select>
+                        @Html.ValidationMessageFor(m => m.State, null, new { @class = "help-inline" })
+                    </div>
+                }
+                <!-- end control-group-->
+                @using (Html.ControlGroupFor(m => m.Postcode))
+                {
+                    @Html.LabelFor(m => m.Postcode, new { @class = "control-label" })
+                    <div class="controls">
+                        @Html.EditorFor(m => m.Postcode)
+                        @Html.ValidationMessageFor(m => m.Postcode, null, new { @class = "help-inline" })
+                    </div>
+                }
+                <!-- end control-group-->
+                @using (Html.ControlGroupFor(m => m.PhoneNumber))
+                {
+                    @Html.LabelFor(m => m.PhoneNumber, new { @class = "control-label" })
+                    <div class="controls">
+                        @Html.EditorFor(m => m.PhoneNumber)
+                        @Html.ValidationMessageFor(m => m.PhoneNumber, null, new { @class = "help-inline" })
+                    </div>
+                }
+                <!-- end control-group-->
+                @using (Html.ControlGroupFor(m => m.Message))
+                {
+                    @Html.LabelFor(m => m.Message, new { @class = "control-label" })
+                    <div class="controls">
+                        @Html.EditorFor(m => m.Message)
+                        @Html.ValidationMessageFor(m => m.Message, null, new { @class = "help-inline" })
+                    </div>
+                }
+                <!-- end control-group-->
+                @*@using (Html.ControlGroupFor(m => m.Street))
+                {
+                    @Html.LabelFor(m => m.Street, new { @class = "control-label" })
+                    <div class="controls">
+                        @Html.EditorFor(m => m.Street)
+                        @Html.ValidationMessageFor(m => m.Street, null, new { @class = "help-inline" })
+                    </div>
+                }*@
+                <!-- end control-group-->
+                @using (Html.ControlGroupFor(m => m.OptIn))
+                {
+                    @Html.LabelFor(m => m.OptIn, new { @class = "control-label" })
+                    <div class="controls">
+                        <label class="checkbox">
+                            @Html.CheckBoxFor(m => m.OptIn)<label>Opt In</label>
+                        </label>
+                    </div>
+                }
+                <!-- end control-group-->
+                <div class="buttonContainer">
+                    <button type="submit" class="btn">Submit</button>
+                </div>
+            </fieldset>
+        }
+    </div>
+
+    <div class="span4">
+        @Content.Display.Text
+    </div>
+    <div class="span4">
+        <h1>Handy Links</h1>
+        <ul class="usefulLinks">
+            @{
+                var startPage = N2.Find.StartPage;
+                var usefulLink = startPage.GetDetail<string>("UsefulLinksPage", null);
+                if (!string.IsNullOrWhiteSpace(usefulLink))
+                {
+                <li><a href="@usefulLink">Link to useful information</a></li>        
+                }
+            }
+        </ul>
+    </div>
+</div>

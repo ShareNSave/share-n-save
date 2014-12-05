@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Listing category";
+    Layout = "~/Areas/Admin/Views/Shared/Admin.cshtml";
+}
+@model ZeroWaste.SharePortal.Areas.Admin.Models.ListingCategoryModel
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        var obj = $("#ListingIcon_Category_Id");
+        $("#CategoryId").val(obj.val());
+
+        obj.change(function () {
+            $("#CategoryId").val(obj.val());
+        });
+    });
+</script>*@
+<h4>New listing category</h4>
+@using (Html.BeginForm("New", "ListingCategory", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false)
+    <table>
+        <tbody>
+            <tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.ListingCategory.Name)
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.ListingCategory.Name)
+                    @Html.ValidationMessageFor(m => m.ListingCategory.Name)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="buttonContainer">
+        <button type="submit" class="btn">Submit</button>
+        @Html.ActionLink("Cancel", "Index")
+    </div>
+}

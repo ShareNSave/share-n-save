@@ -1,0 +1,86 @@
+﻿@using ZeroWaste.SharePortal.Areas.Admin.Extensions
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="/Content/Admin.css" rel="stylesheet" type="text/css" />
+    <link type="text/css" href="/Content/jquery-ui.custom.css" rel="stylesheet" />
+    <link type="text/css" href="/Content/2011.2.712/telerik.common.min.css" rel="stylesheet" />
+    <link type="text/css" href="/Content/2011.2.712/telerik.black.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="/Scripts/jquery-1.10.2.min.js"></script>
+    @if (IsSectionDefined("Title"))
+    {       
+        @RenderSection("Title")
+    }
+    else
+    {
+        <title>Admin</title>
+    }
+
+    @if (IsSectionDefined("Header"))
+    {       
+        @RenderSection("Header")
+    }
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <div style="float: right;" class="login-box">
+                Welcome, @HttpContext.Current.User.Identity.Name
+                @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm"}))
+                {
+                    @Html.AntiForgeryToken()
+                    <a href="javascript:document.getElementById('logoutForm').submit()" class="logout">Log out</a>
+                }
+                <br/>
+                <h2><a href="/">Return to the ShareNSave website</a></h2>
+            </div>
+            <div id="title">
+                <a href="/">
+                    <img src="/Content/images/sharensave-rev.png" alt="sharensave logo" width="136" height="39" /></a>
+                    <h1>Zero Waste SA</h1>
+                </a></div>
+            <div id="menucontainer">
+                <ul id="menu">
+                    @Html.Raw(Html.MenuItem("Listings", "Listings", "ListingManage", "Admin"))
+
+                    @if (HttpContext.Current.User.IsInRole(ZeroWaste.SharePortal.Utils.RoleNames.Administrators))
+                    {
+                        @Html.Raw(Html.MenuItem("Listing Icons", "ListingIcons", "ListingIcon", "Admin"))
+                        
+                        @Html.Raw(Html.MenuItem("Listing Categories", "ListingCategories", "ListingCategory", "Admin"))
+                        @Html.Raw(Html.MenuItem("Users", "Users", "User", "Admin"))
+                    }
+                </ul>
+            </div>
+        </div>
+        <div id="content">
+            @RenderBody()
+            @if (IsSectionDefined("Main"))
+            {       
+                @RenderSection("Main")
+            }
+        </div>
+        <div id="footer">
+            @if (IsSectionDefined("Footer"))
+            {       
+                @RenderSection("Footer")
+            }
+        </div>
+    </div>
+
+        @if (IsSectionDefined("script"))
+        {
+            @RenderSection("script")
+        }
+    <script type="text/javascript" src="/Scripts/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.datepicker.js"></script>
+    <script type="text/javascript">
+        function deleteEntity(url) {
+            if (confirm("Are you sure to delete the item?")) {
+                window.location.href = url;
+            }
+        }
+    </script>
+</body>
+</html>

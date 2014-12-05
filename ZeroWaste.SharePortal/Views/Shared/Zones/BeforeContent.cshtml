@@ -1,0 +1,17 @@
+﻿@{
+    Html.DroppableZone("BeforeContent").Title("Before Content").Render();
+    Html.RenderPartial("LayoutPartials/Breadcrumb");
+    var showPageTitle = true;
+    
+    var page = (Content.Current.Item as N2Bootstrap.Library.Models.ContentPage);
+    if (page != null)
+    {
+        showPageTitle = page.ShowPageTitle;
+    }
+}
+@if (showPageTitle)
+{
+    <header class="page-header">
+        <h1>@Content.Current.Item.Title</h1>
+    </header>
+}

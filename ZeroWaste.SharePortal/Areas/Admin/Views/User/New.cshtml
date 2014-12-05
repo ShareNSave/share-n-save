@@ -1,0 +1,128 @@
+﻿@{
+    ViewBag.Title = "Listing Icons";
+    Layout = "~/Areas/Admin/Views/Shared/Admin.cshtml";
+}
+@using ZeroWaste.SharePortal.Models.Data
+@using N2.Web.UI.WebControls
+@using Telerik.Web.Mvc.UI
+@using BootstrapSupport
+@using ZeroWaste.SharePortal.Extensions
+@model ZeroWaste.SharePortal.Areas.Admin.Models.UserModel
+
+
+<h4>New User</h4>
+
+
+@using (Html.BeginForm("New", "User", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>User Profile</legend>
+        @using (Html.ControlGroupFor(m => m.User.Username))
+        {
+            @Html.LabelFor(m => m.User.Username, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(m => m.User.Username, new { @class = "input-xlarge" })
+                @Html.ValidationMessageFor(m => m.User.Username, null, new { @class = "help-inline" })
+            </div>
+        }
+        @using (Html.ControlGroupFor(m => m.User.Name))
+        {
+            @Html.LabelFor(m => m.User.Name, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(m => m.User.Name, new { @class = "input-xlarge" })
+                @Html.ValidationMessageFor(m => m.User.Name, null, new { @class = "help-inline" })
+            </div>
+        }
+        @using (Html.ControlGroupFor(m => m.User.OrganisationOrGroup))
+        {
+            @Html.LabelFor(m => m.User.OrganisationOrGroup, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(m => m.User.OrganisationOrGroup, new { @class = "input-xlarge" })
+                @Html.ValidationMessageFor(m => m.User.OrganisationOrGroup, null, new { @class = "help-inline" })
+            </div>
+        }
+        @using (Html.ControlGroupFor(m => m.User.GroupAddress))
+        {
+            @Html.LabelFor(m => m.User.GroupAddress, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(m => m.User.GroupAddress, new { @class = "input-xlarge" })
+                @Html.ValidationMessageFor(m => m.User.GroupAddress, null, new { @class = "help-inline" })
+            </div>
+        }
+        @* @using (Html.ControlGroupFor(m => m.User.AboutGroup))
+        {
+            @Html.LabelFor(m => m.User.AboutGroup, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(m => m.User.AboutGroup, new { @class = "input-xlarge" })
+                @Html.ValidationMessageFor(m => m.User.AboutGroup, null, new { @class = "help-inline" })
+            </div>
+        } *@
+        @using (Html.ControlGroupFor(m => m.User.City))
+        {
+            @Html.LabelFor(m => m.User.City, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(m => m.User.City, new { @class = "input-xlarge" })
+                @Html.ValidationMessageFor(m => m.User.City, null, new { @class = "help-inline" })
+            </div>
+        }
+        @using (Html.ControlGroupFor(m => m.User.State))
+        {
+            @Html.LabelFor(m => m.User.State, new { @class = "control-label" })
+            <div class="controls">
+                @Html.DropDownListFor(m => m.State, Model.States, "Please select");
+                @Html.ValidationMessageFor(m => m.User.State, null, new { @class = "help-inline" })
+            </div>
+        }
+        @using (Html.ControlGroupFor(m => m.User.Postcode))
+        {
+            @Html.LabelFor(m => m.User.Postcode, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(m => m.User.Postcode, new { @class = "input-xlarge" })
+                @Html.ValidationMessageFor(m => m.User.Postcode, null, new { @class = "help-inline" })
+            </div>
+        }
+        @using (Html.ControlGroupFor(m => m.User.Phone))
+        {
+            @Html.LabelFor(m => m.User.Phone, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(m => m.User.Phone, new { @class = "input-xlarge" })
+                @Html.ValidationMessageFor(m => m.User.Phone, null, new { @class = "help-inline" })
+            </div>
+        }
+        @using (Html.ControlGroupFor(m => m.User.Email))
+        {
+            @Html.LabelFor(m => m.User.Email, new { @class = "control-label" })
+                
+            <div class="controls">
+                @Html.TextBoxFor(m => m.User.Email, new { @class = "input-xlarge" })
+                @Html.ValidationMessageFor(m => m.User.Email, null, new { @class = "help-inline" })
+            </div>
+                
+        }
+        @using (Html.ControlGroupFor(m => m.Password))
+        {
+            @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(m => m.Password, new { @class = "input-xlarge" })
+                @Html.ValidationMessageFor(m => m.Password, null, new { @class = "help-inline" })
+            </div>
+        }
+        @using (Html.ControlGroupFor(m => m.ConfirmPassword))
+        {
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(m => m.ConfirmPassword, new { @class = "input-xlarge" })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword, null, new { @class = "help-inline" })
+            </div>
+        }
+        <div class="buttonContainer">
+            <button type="submit" class="btn">Submit</button>
+        </div>
+    </fieldset>
+}
+
+
+
+

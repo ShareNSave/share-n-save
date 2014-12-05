@@ -1,0 +1,17 @@
+﻿@using ZeroWaste.SharePortal.Models
+@using N2.Collections
+
+<div class="row">
+    @foreach (var column in Content.Current.Item.GetChildren(new TypeFilter(typeof(Columns.Column))).Cast<Columns.Column>())
+    {
+        var cssClass = (column.Offset > 0) ? 
+            string.Format("span{0} offset{1}", column.NumberOfColumns, column.Offset) : 
+            string.Format("span{0}", column.NumberOfColumns);
+        
+        <div class="@(cssClass)">
+            @{
+                Html.DroppableZone(column, "Column").Render();
+            }
+        </div>
+    }
+</div>

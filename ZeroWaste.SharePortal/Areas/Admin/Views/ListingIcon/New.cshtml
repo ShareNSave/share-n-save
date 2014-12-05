@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Listing Icons";
+    Layout = "~/Areas/Admin/Views/Shared/Admin.cshtml";
+}
+@using ZeroWaste.SharePortal.Models.Data
+@using N2.Web.UI.WebControls
+@using Telerik.Web.Mvc.UI
+
+@model ZeroWaste.SharePortal.Areas.Admin.Models.ListingIconModel
+
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        var obj = $("#ListingIcon_Category_Id");
+        $("#CategoryId").val(obj.val());
+
+        obj.change(function () {
+            $("#CategoryId").val(obj.val());
+        });
+    });
+</script>*@
+<h4>New listing icon</h4>
+@using (Html.BeginForm("New", "ListingIcon", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false)
+    <table>
+        <tbody>
+            <tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.ListingIcon.Name)
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.ListingIcon.Name)
+                    @Html.ValidationMessageFor(m => m.ListingIcon.Name)
+                </td>
+            </tr>
+            <tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.ListingIcon.Description)
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.ListingIcon.Description)
+                    @Html.ValidationMessageFor(m => m.ListingIcon.Description)
+                </td>
+            </tr>
+            <tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.ListingIcon.IconPath,"Icon image")
+                </th>
+                <td colspan="3">
+                    <input type="file" name ="iconimage" />
+                    @Html.ValidationMessageFor(m => m.ListingIcon.IconPath)
+                </td>
+            </tr>
+            <tr>
+                <th class="text-align-left">
+                    <label>Category</label>
+                </th>
+                <td colspan="3">
+                    @Html.DropDownListFor(m => m.CategoryId, Model.ListingCategories)
+                    @Html.ValidationMessageFor(m => m.CategoryId)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="buttonContainer">
+        <button type="submit" class="btn">Submit</button>
+        @Html.ActionLink("Cancel", "Index")
+    </div>
+   
+}
+
+@Html.Telerik().ScriptRegistrar()
+

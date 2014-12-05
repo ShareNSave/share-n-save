@@ -1,0 +1,135 @@
+﻿<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<head>
+    @{
+        Html.RenderPartial("LayoutPartials/Head");
+        if (IsSectionDefined("head"))
+        {
+        @RenderSection("head")
+        }
+    }
+
+    @*<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">*@
+    @Bundles.RenderStylesheets()
+</head>
+    <body>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-P8M7XK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function (w, d, s, l, i) {
+w[l] = w[l] || []; w[l].push({
+'gtm.start':
+new Date().getTime(), event: 'gtm.js'
+}); var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+'//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-P8M7XK');</script>
+<!-- End Google Tag Manager -->
+
+        @if (Content.Traverse.StartPage != null && !string.IsNullOrWhiteSpace(Content.Traverse.StartPage.GetDetail(Defaults.StartPageDetails.GoogleAnalyticsKey, string.Empty)) && !string.IsNullOrWhiteSpace(Content.Traverse.StartPage.GetDetail(Defaults.StartPageDetails.GoogleAnalyticsDomain, string.Empty)))
+        {
+            var key = Content.Traverse.StartPage.GetDetail(Defaults.StartPageDetails.GoogleAnalyticsKey, string.Empty);
+            var domain = Content.Traverse.StartPage.GetDetail(Defaults.StartPageDetails.GoogleAnalyticsDomain, string.Empty);
+            <script>
+                (function(i, s, o, g, r, a, m) {
+                    i['GoogleAnalyticsObject'] = r;
+                    i[r] = i[r] || function() {
+                        (i[r].q = i[r].q || []).push(arguments);
+                    }, i[r].l = 1 * new Date();
+                    a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+                    a.async = 1;
+                    a.src = g;
+                    m.parentNode.insertBefore(a, m);
+                })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+                ga('create', '@key', '@domain');
+                ga('send', 'pageview');
+            </script>
+
+        }
+        @if (IsSectionDefined("page"))
+        {
+            @RenderSection("page")
+        }
+        else
+        {
+            <header id="header">
+                @if (IsSectionDefined("header"))
+                {
+                    @RenderSection("header")
+                }
+                else
+                {
+                    Html.RenderPartial("LayoutPartials/Header");
+                }
+            </header>
+
+            <section id="main-before">
+                @if (IsSectionDefined("beforeMain"))
+                {
+                    @RenderSection("beforeMain")
+                }
+                else
+                {
+                    Html.RenderPartial("Zones/BeforeMain");
+                }
+            </section>
+
+            if (IsSectionDefined("main"))
+            {
+                <div>@RenderSection("main")</div>
+            }
+            else
+            {
+                <section id="main" class="main">
+                    <div class="container">
+                        <div class="row">
+                            @{ Html.RenderPartial("LayoutPartials/PreContent"); }
+                        </div>
+                        <div class="row">
+                            @if (IsSectionDefined("ContentSection"))
+                            {
+                                @RenderSection("ContentSection")
+                            }
+                            else
+                            {
+                                <div id="content" role="main" class="span12">@RenderBody()</div>
+                            }
+                        </div>
+                        <div class="row">
+                            @{ Html.RenderPartial("LayoutPartials/PostContent"); }
+                        </div>
+                    </div>
+                </section>
+            }
+            <section id="main-after">@{ Html.RenderPartial("Zones/AfterMain"); }</section>
+            <footer id="footer">@{ Html.RenderPartial("LayoutPartials/Footer"); }</footer>
+            <div id="ajax-loading" class="modal hide" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-body">
+                    <div class="progress progress-striped active">
+                        <div class="bar" style="width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+        }
+        
+        @Html.Resources().JQuery()
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        @Bundles.RenderScripts()
+        @if (IsSectionDefined("scripts"))
+        {
+            @RenderSection("scripts")
+        }
+        @{
+            var controlPanel = Html.ControlPanel();
+            controlPanel.Configure(cp => { cp.IncludeJQuery = false; });
+            controlPanel.Render();
+        }
+    </body>
+</html>

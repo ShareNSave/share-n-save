@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Listings";
+    Layout = "~/Areas/Admin/Views/Shared/Admin.cshtml";
+}
+@using ZeroWaste.SharePortal.Models.Data
+@using N2.Web.UI.WebControls
+@using Telerik.Web.Mvc.UI
+@model List<Listing>
+<h2>Listings</h2>
+<h3><a href="/add-your-activity?action=add-new-activity">Create a NEW listing ></a><br/> or manage your listings below.</h3>
+@{
+    bool IsAdmin = false;
+    if (HttpContext.Current != null && HttpContext.Current.User != null)
+    {
+        var user = HttpContext.Current.User;
+        if (user.IsInRole(ZeroWaste.SharePortal.Utils.RoleNames.Administrators) || string.Compare(user.Identity.Name, "admin", StringComparison.OrdinalIgnoreCase) == 0)
+        {
+            IsAdmin = true;
+        }
+    }
+}
+@if (IsAdmin)
+{
+    @Html.ActionLink("All", "Index", new { @type = "all" }) <span>|</span> @Html.ActionLink("Require Approval", "Index", new { @type = "requireApproval" })
+}
+
+@Html.Telerik().Grid(Model).Name("Grid").Columns(columns =>
+{
+    //columns.Bound(p => p.ListingId).Filterable(true).Title("Id").Width(55);
+    columns.Bound(p => p.Name).Filterable(true);
+    //columns.Bound(p => p.User.Email).Filterable(true);
+    columns.Bound(p => p.Email).Filterable(true);
+    //columns.Bound(p => p.Group).Filterable(true);
+    //columns.Bound(p => p.AboutGroup).Filterable(true);
+    columns.Bound(p => p.WebLink).Filterable(true);
+    //columns.Bound(p => p.FacebookLink).Filterable(true);
+    //columns.Bound(p => p.ListingImageLink).Filterable(true);
+    //columns.Bound(p => p.ListingMessage).Filterable(true);
+    columns.Bound(p => p.ListingIcon.Category.Name).Title("Category").Filterable(true).Width(160);
+    //columns.Template(x =>
+    //    string.Format("{0}", x.User == null ? null : @Html.ActionLink(x.User.Name, "Edit", "User", new { id = x.User.UserId }, null))).Title("Listing User");
+    columns.Template(x =>
+        string.Format("{0} | {1} | {2}", Html.ActionLink("Edit", "Edit", new { id = x.ListingId }, null), Html.ActionLink("User", "Details", "User", new { userId = x.User != null ? x.User.UserId : 0 }, null), "<a style=\"color: red;\" href=\"javascript:deleteEntity('/Admin/ListingManage/Delete?id=" + x.ListingId + "');\">Delete</a>")).Title("Operate").Width(150);
+
+}).Pageable(paging => paging.PageSize(50)).Filterable().Sortable().Resizable(resize => resize.Columns(true)).Scrollable(c => c.Enabled(true).Height(600));
+
+    @Html.Telerik().ScriptRegistrar()

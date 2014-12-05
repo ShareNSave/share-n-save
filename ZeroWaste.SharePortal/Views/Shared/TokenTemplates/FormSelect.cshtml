@@ -1,0 +1,19 @@
+﻿@model string
+@{
+    var tokenHelper = new N2Bootstrap.Library.Tokens.SelectTokenHelper(Html.DisplayableToken());
+}
+@if (!tokenHelper.IsValid)
+{
+    @Html.Partial("InvalidToken", tokenHelper)
+}
+else
+{
+    <span class="formfield formselect">
+        <select name="@tokenHelper.GetFormName()">
+            @foreach (var opt in tokenHelper.GetOptions())
+            {
+                <option>@opt</option>
+            }
+        </select>
+    </span>
+}

@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Listing Icons";
+    Layout = "~/Areas/Admin/Views/Shared/Admin.cshtml";
+}
+@model ZeroWaste.SharePortal.Areas.Admin.Models.ListingIconModel
+<script type="text/javascript">
+    $(document).ready(function () {
+        var obj = $("#ListingIcon_Category_Id");
+        $("#CategoryId").val(obj.val());
+
+        obj.change(function () {
+            $("#CategoryId").val(obj.val());
+        });
+    });
+</script>
+<h4>Edit listing icon</h4>
+@if (Model == null)
+{
+    <p>Listing icon does not exist</p>
+    return;
+}
+@using (Html.BeginForm("Edit", "ListingIcon", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false)
+    <table>
+        <tbody>
+            <tr>
+                <th class="text-align-left">Listing icon id
+                </th>
+                <td colspan="4">
+                    @Model.ListingIcon.ListingIconId
+                    @Html.HiddenFor(x => x.ListingIcon.ListingIconId)
+                </td>
+            </tr>
+            <tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.ListingIcon.Name)
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.ListingIcon.Name)
+                    @Html.ValidationMessageFor(m => m.ListingIcon.Name)
+                </td>
+            </tr>
+            <tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.ListingIcon.Description)
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.ListingIcon.Description)
+                    @Html.ValidationMessageFor(m => m.ListingIcon.Description)
+                </td>
+            </tr>
+            <tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.ListingIcon.IconPath)
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.ListingIcon.IconPath)
+                    @Html.ValidationMessageFor(m => m.ListingIcon.IconPath)
+                </td>
+            </tr>
+            <tr>
+                <th class="text-align-left">
+                    <label>Category</label>
+                </th>
+                <td colspan="3">
+                    @Html.DropDownListFor(m=>m.ListingIcon.Category.Id,Model.ListingCategories)
+                    @Html.HiddenFor(m=>m.CategoryId)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="buttonContainer">
+        <button type="submit" class="btn">Submit</button>
+        @Html.ActionLink("Cancel", "Index")
+    </div>
+}

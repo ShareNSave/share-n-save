@@ -1,0 +1,37 @@
+﻿@using BootstrapSupport
+@model ZeroWaste.SharePortal.Models.LoginViewModel
+
+<section id="loginForm">
+<div class="row">
+<div class="span4 offset4">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <fieldset class="">
+            <h1>@Model.GetLabel()</h1>
+            @foreach (var property in Model.VisibleProperties())
+            {
+                using (Html.ControlGroupFor(property.Name))
+                {
+                <div class="controls">
+                	@Html.Label(property.Name.ToSeparatedWords(), new { @class = "control-label" })
+                    @Html.Editor(property.Name, new { @class = "input-xlarge" })
+                    @Html.ValidationMessage(property.Name, null, new { @class = "help-block" })
+                </div>
+                }
+            }
+            <div class="buttonContainer">
+                <button type="submit" class="btn">Submit</button>
+            </div>
+        </fieldset>
+        <p>
+            @Html.ActionLink("Forgot your password?", "ForgotPassword")
+        </p>
+        <p>
+            @Html.ActionLink("Register", "Register") if you don't have an account.
+        </p>
+    }
+</div>
+</div>
+</section>

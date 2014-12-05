@@ -1,0 +1,23 @@
+﻿@model ZeroWaste.SharePortal.Models.ContentPart
+
+@{
+
+    Content.Define(ie =>
+    {
+        ie.Title = "Content Tile";
+        ie.IconUrl = "{IconsUrl}/brick.png";
+
+        ie.Container("Advanced", cr =>
+        {
+            cr.Text("CssClass");
+            cr.Text("InlineStyle");
+        });
+    });
+
+    var InlineStyles = (String)Content.Data.InlineStyle ?? String.Empty;
+    var CssClass = (String)Content.Data.CssClass ?? String.Empty;
+}
+
+<div class="@CssClass" style="@InlineStyles">
+    @{ Html.DroppableZone("Content").Render(); }
+</div>

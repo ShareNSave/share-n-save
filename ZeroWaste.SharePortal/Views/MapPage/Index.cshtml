@@ -1,0 +1,25 @@
+﻿@model ZeroWaste.SharePortal.Models.MapPageModel
+
+@section head{
+    @{
+        Bundles.Reference("addthis");
+        Bundles.Reference("googlemap");
+        Bundles.Reference("Scripts/Map");
+    }
+}
+<div class="row">
+<div class="span12">
+    <div class="navTwo">
+        <ul id="filterOptions">
+            <li class="all active"><a id="filterAll" href="javascript:void(0)" class="all">All</a></li>
+            <li class="share"><a id="filterShare" href="javascript:void(0)" class="share">Share N Swap</a></li>
+            <li class="together"><a id="filterTogether" href="javascript:void(0)" class="together">Do Things Together</a></li>
+            <li class="borrow"><a id="filterBorrow" href="javascript:void(0)" class="borrow">Borrow stuff</a></li>
+        </ul>
+    </div>
+    <div id="map_canvas">
+    </div>
+    <input id="categoryId" type="hidden" value="0" />
+    <input id="zoomLevel" type="hidden" value="10" />
+</div>
+</div>

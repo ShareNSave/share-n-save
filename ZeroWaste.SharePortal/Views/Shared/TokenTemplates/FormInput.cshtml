@@ -1,0 +1,14 @@
+﻿@model string
+@{
+    var tokenHelper = new N2Bootstrap.Library.Tokens.InputTokenHelper(Html.DisplayableToken());
+}
+@if (!tokenHelper.IsValid)
+{
+    @Html.Partial("InvalidToken", tokenHelper)
+}
+else
+{
+    <span class="formfield forminput">
+        <input name="@tokenHelper.GetFormName()" />
+    </span>
+}

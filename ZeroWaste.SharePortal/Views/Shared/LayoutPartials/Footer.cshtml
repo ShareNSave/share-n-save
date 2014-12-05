@@ -1,0 +1,67 @@
+﻿<div class="footerContainer">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <a href="/" class="footerLogo">
+                    <img src="@Url.Content("~/content/images/sharensave-rev.png")" alt="Share n Save logo" width="136" height="39"></a>
+                @{
+                    var isOutOfStructure = Content.Current.Item == null && !string.IsNullOrEmpty(Request["returnUrl"]);
+                    using (isOutOfStructure ? Content.BeginScope(Request["returnUrl"]) : Content.BeginScope(Content.Traverse.StartPage))
+                    {
+                    @Content.Display.FooterText
+                    }
+                }
+
+                <div class="footerIcons">
+                    @{
+                        var contactUsPage = N2.Find.StartPage.GetDetail<string>("ContactUsPage", null);
+                        if (string.IsNullOrWhiteSpace(contactUsPage))
+                        {
+                            contactUsPage = "#";
+                        }
+                        var usefulLinkPage = N2.Find.StartPage.GetDetail<string>("UsefulLinksPage", null);
+                        if (string.IsNullOrWhiteSpace(usefulLinkPage))
+                        {
+                            usefulLinkPage = "#";
+                        }                        
+                    }
+                    <a href="@Url.Content(usefulLinkPage)" class="footerUseful"><span>Handy Links</span></a>
+                    <a href="@Url.Content(contactUsPage)" class="footerContact"><span>Contact Us</span></a>
+                    <div class="addthis_toolbox social-group">
+                        <div class="custom_images">
+                            <a class="addthis_button_email">
+                                <span class="footerMail"></span>
+                            </a>
+                            
+                            <a href="https://www.facebook.com/shareNsave" class="button_facebook" target="_blank">
+                                <span class="footerfacebook"></span>
+                            </a>
+                            
+                            <a href="https://twitter.com/sharensave" class="button_twitter" target="_blank">
+                                <span class="footertwitter"></span>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+        	<div class="span3">
+	        	<a href="http://www.zerowaste.sa.gov.au/" target="_blank" class="zwsa">
+	                <img src="/Content/images/gosa-zwsa.png" alt="Zero Waste SA" width="174" height="39" />
+	            </a>
+        	</div>
+            <div class="span3">
+            	<a href="http://pv.webbyawards.com/2014/web/general-website/community/honorees" target="_blank" class="webby">
+	                <img src="/Content/images/Webby_Logo.png" alt="Webby Awards" width="69" height="39" />
+	                <span class="webby-text">2014 Webby Awards Official Honoree Website</span>
+	            </a>
+            </div>
+            <div class="span6 footerlinks">
+            <span class="copyright">&copy; Copyright @DateTime.Now.Year Zero Waste SA</span>
+                @Html.UnorderedList(Content.Traverse.StartPage.Children.Where(x => x.Details.ContainsKey("VisibleFooter") && (bool)x.Details["VisibleFooter"].Value), @<span>@Html.Link(item.Data)</span>)
+            </div>
+        </div>
+    </div>
+</div>

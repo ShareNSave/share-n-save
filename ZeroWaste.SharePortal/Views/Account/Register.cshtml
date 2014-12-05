@@ -1,0 +1,169 @@
+﻿@using BootstrapSupport
+@using ZeroWaste.SharePortal.Extensions
+@model ZeroWaste.SharePortal.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<div class="row">
+    <div class="span8">
+        <div class="row">
+            <div class="span4">
+                <h1>Create a Listing</h1>
+                <h2>The Criteria</h2>
+
+                <p>To have your group or organisation listed you must meet the following criteria:</p>
+
+                <ul>
+                    <li>Any event, or service that is no cost or free</li>
+                    <li>Events and services with a minimal charge that covers basic costs of materials or services. Some examples - a toy library membership, cost of ingredients or kitchen hire for shared cooking.</li>
+                    <li>Person to person sharing. This is not the Yellow Pages or a business directory, it&rsquo;s about people and communities sharing stuff.</li>
+                    <li>Anything that involves sharing, exchange, barter, gift or swap.</li>
+                </ul>
+
+                <p>We won&rsquo;t be listing businesses such as second hand dealers, pawnbrokers, charity shops, garage sales or second hand record stores. Decisions about what to list are decided by how closely the service or event aligns with the values of the ShareNSave project and Zero Waste SA and are solely at the discretion of Zero Waste SA.</p>
+
+                <h2>The Process</h2>
+
+                <ol>
+                    <li>Enter your email address and submit. This enables us to check whether we already have you on our data base and it enables you to move to step two.</li>
+                    <li>Enter administration information about yourself and your group. This information won&rsquo;t be published online, but will enable us to contact you and assist with your listing. Submit this information and complete step three.</li>
+                    <li>Enter the public listing information. This includes the name &amp; suburb of your group, a short description of what your group does, the dates and times of your activities (you will be able to update these easily once your listing is active), links and contact information, an image to accompany your listing, the address that allows us to locate you on a map and you will need to select the category your listing will appear under. Submit this information.</li>
+                    <li>We will contact you to confirm you fit the criteria</li>
+                    <li>Once confirmed we will make your listing live</li>
+                    <li>When your group is listed you will need set up links &amp; the Share N Save logo on your site, Facebook etc.</li>
+                </ol>
+
+            </div>
+            <div class="span4">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <fieldset>
+                        <h2>Step 2:</h2>
+                        <h2><strong>Register Your Information for Administration.</strong></h2>
+                        <p>The information below is for administration purposes only and it won’t appear on your public listing. </p>
+                        <p>Your contact details - these won’t be shown to the public, it’s just for the site to contact you if we need to.</p>
+                        @Html.HiddenFor(m => m.ReturnUrl)
+
+                        @using (Html.ControlGroupFor(m => m.Name))
+                        {
+                            @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+                            <div class="controls">
+                                @Html.EditorFor(m => m.Name, new { @class = "input-xlarge" })
+                                @Html.ValidationMessageFor(m => m.Name, null, new { @class = "help-inline" })
+                            </div>
+                        }
+                        @using (Html.ControlGroupFor(m => m.OrganisationOrGroup))
+                        {
+                            @Html.LabelFor(m => m.OrganisationOrGroup, new { @class = "control-label" })
+                            <div class="controls">
+                                @Html.EditorFor(m => m.OrganisationOrGroup, new { @class = "input-xlarge" })
+                                @Html.ValidationMessageFor(m => m.OrganisationOrGroup, null, new { @class = "help-inline" })
+                            </div>
+                        }
+                        @using (Html.ControlGroupFor(m => m.GroupAddress))
+                        {
+                            @Html.LabelFor(m => m.GroupAddress, new { @class = "control-label" })
+                            <div class="controls">
+                                @Html.EditorFor(m => m.GroupAddress, new { @class = "input-xlarge" })
+                                @Html.ValidationMessageFor(m => m.GroupAddress, null, new { @class = "help-inline" })
+                            </div>
+                        }
+                        @using (Html.ControlGroupFor(m => m.AboutGroup))
+                        {
+                            @Html.LabelFor(m => m.AboutGroup, new { @class = "control-label" })
+                            <p>So what does your group do? Tell us about how you share, swap and save so we can be sure you meet the criteria.</p>
+                            <div class="controls">
+                                @Html.EditorFor(m => m.AboutGroup, new { @class = "input-xlarge" })
+                                @Html.ValidationMessageFor(m => m.AboutGroup, null, new { @class = "help-inline" })
+                            </div>
+                        }
+                        @using (Html.ControlGroupFor(m => m.City))
+                        {
+                            @Html.LabelFor(m => m.City, new { @class = "control-label" })
+                            <div class="controls">
+                                @Html.EditorFor(m => m.City, new { @class = "input-xlarge" })
+                                @Html.ValidationMessageFor(m => m.City, null, new { @class = "help-inline" })
+                            </div>
+                        }
+                        @using (Html.ControlGroupFor(m => m.State))
+                        {
+                            @Html.LabelFor(m => m.State, new { @class = "control-label" })
+                            <div class="controls">
+                                <select id="State" name="State">
+                                    <option value="SA">SA</option>
+                                    <option value="WA">WA</option>
+                                    <option value="NT">NT</option>
+                                    <option value="QLD">QLD</option>
+                                    <option value="NSW">NSW</option>
+                                    <option value="VIC">VIC</option>
+                                    <option value="TAS">TAS</option>
+                                    <option value="ACT">ACT</option>
+                                </select>
+                                @Html.ValidationMessageFor(m => m.State, null, new { @class = "help-inline" })
+                            </div>
+                        }
+                        @using (Html.ControlGroupFor(m => m.Postcode))
+                        {
+                            @Html.LabelFor(m => m.Postcode, new { @class = "control-label" })
+                            <div class="controls">
+                                @Html.EditorFor(m => m.Postcode, new { @class = "input-xlarge" })
+                                @Html.ValidationMessageFor(m => m.Postcode, null, new { @class = "help-inline" })
+                            </div>
+                        }
+                        @using (Html.ControlGroupFor(m => m.Phone))
+                        {
+                            @Html.LabelFor(m => m.Phone, new { @class = "control-label" })
+                            <div class="controls">
+                                @Html.EditorFor(m => m.Phone, new { @class = "input-xlarge" })
+                                @Html.ValidationMessageFor(m => m.Phone, null, new { @class = "help-inline" })
+                            </div>
+                        }
+                        @using (Html.ControlGroupFor(m => m.Email))
+                        {
+                            @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                            <p>What email address should Share N Save contact you on about your account or to reset your password?</p>
+                            if (!string.IsNullOrWhiteSpace(Model.Email))
+                            {
+                            <div class="controls">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "", @readonly = "readOnly" })
+                                @Html.ValidationMessageFor(m => m.Email, null, new { @class = "help-inline" })
+                            </div>
+                            }
+                            else
+                            {
+                            <div class="controls">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "" })
+                                @Html.ValidationMessageFor(m => m.Email, null, new { @class = "help-inline" })
+                            </div>
+                            }
+                        }
+                        @using (Html.ControlGroupFor(m => m.Password))
+                        {
+                            @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                            <div class="controls">
+                                @Html.EditorFor(m => m.Password, new { @class = "input-xlarge" })
+                                @Html.ValidationMessageFor(m => m.Password, null, new { @class = "help-inline" })
+                            </div>
+                        }
+                        @using (Html.ControlGroupFor(m => m.ConfirmPassword))
+                        {
+                            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label" })
+                            <div class="controls">
+                                @Html.EditorFor(m => m.ConfirmPassword, new { @class = "input-xlarge" })
+                                @Html.ValidationMessageFor(m => m.ConfirmPassword, null, new { @class = "help-inline" })
+                            </div>
+                        }
+                        <div class="buttonContainer">
+                            <button type="submit" class="btn">Submit</button>
+                        </div>
+                    </fieldset>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

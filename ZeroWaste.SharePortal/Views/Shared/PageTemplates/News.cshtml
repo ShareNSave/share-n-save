@@ -1,0 +1,12 @@
+﻿@model ZeroWaste.SharePortal.Models.News
+<div>
+    <div class="row">
+        <div class="span4">
+            @{ Html.RenderPartial("Zones/Left"); }
+        </div>
+        <div class="span8">
+            @Content.Display.Title
+            @Content.Display.Text
+        </div>
+    </div>
+</div>

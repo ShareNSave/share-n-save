@@ -1,0 +1,60 @@
+﻿@model ZeroWaste.SharePortal.Models.ContentPart
+@using ZeroWaste.SharePortal.Models
+
+@{ 
+    Content.Define(re =>
+       {
+           re.Title = "Latest News";
+           re.Text("Heading", "Heading");
+           re.Text("ShowNumbers", "Items to show").DefaultValue(3).Configure(e => { e.ValidationExpression = "\\d+"; e.ValidationMessage = "Must be a number"; }); ;
+       }); 
+}
+
+@if (Content.Has.Heading && !string.IsNullOrWhiteSpace(Content.Data.Heading))
+{
+    <h1>@Content.Data.Heading</h1>
+}
+@{
+    int number = 3;
+
+    if (Content.Has.ShowNumbers && !string.IsNullOrWhiteSpace(Content.Data.ShowNumbers))
+    {
+        if (!int.TryParse(Content.Data.ShowNumbers, out number))
+        {
+            number = 3;
+        }
+    }
+
+    var noticeboard = N2.Find.Items.Where.Type.Eq(typeof(NewsContainer)).Filters(new N2.Collections.PublishedFilter()).Select<NewsContainer>().FirstOrDefault();
+    IList<News> children = new List<News>();
+    if (noticeboard != null)
+    {
+        children = noticeboard.NewsItems.OrderByDescending(x => x.Published).Take(number).ToList();
+    }
+}
+
+@if (children.Count > 0)
+{
+    <ul class="noticeList">
+        @for (int index = 0; index < children.Count; index++)
+        {
+            var item = children[index];
+            //if (item == this.Content.Current.Page)
+            //{
+            //    continue;
+            //}
+            <li>
+                @{
+                    var url = noticeboard.Url + "?item=" + index;
+                }
+                <h4>@string.Format("{0:dd MMM yyyy}", item.Published)</h4>
+                <h2><a href="@url">@item.Title</a></h2>
+                @if (!string.IsNullOrWhiteSpace(item.Summary))
+                {
+                    @Html.Raw(item.Summary)
+                }
+                <p><a href="@url" class="moreLink">READ MORE</a></p>
+            </li>
+        }
+    </ul>
+}

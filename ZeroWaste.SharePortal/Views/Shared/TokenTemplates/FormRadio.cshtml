@@ -1,0 +1,12 @@
+﻿@model string
+@{
+    var tokenHelper = new N2Bootstrap.Library.Tokens.RadioTokenHelper(Html.DisplayableToken());
+}
+@if (!tokenHelper.IsValid)
+{
+    @Html.Partial("InvalidToken", tokenHelper)
+}
+else
+{
+    <input type="radio" name="@tokenHelper.GetFormName()" value="@tokenHelper.GetValue()" />
+}

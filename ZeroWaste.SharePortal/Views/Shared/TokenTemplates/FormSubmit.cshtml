@@ -1,0 +1,9 @@
+﻿@model string
+@if (string.IsNullOrEmpty(Model))
+{
+    <input class="btn submit" type="submit" />
+}
+else
+{
+    <input class="btn submit" type="submit" value="@Model" />
+}

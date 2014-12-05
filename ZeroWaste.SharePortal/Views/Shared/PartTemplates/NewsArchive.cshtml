@@ -1,0 +1,39 @@
+﻿@model ZeroWaste.SharePortal.Models.NewsArchiveModel
+@using ZeroWaste.SharePortal.Extensions
+@using ZeroWaste.SharePortal.Models
+
+
+<div class="archive">
+    <h2>@Content.Display.Title</h2>
+    <ul>
+        @{
+            var routeData = RouteTable.Routes.GetRouteData(this.ViewContext.HttpContext);
+            string year = null;
+            string month = null;
+            if (routeData != null)
+            {
+                year = string.Format("{0}", routeData.Values["year"]);
+                month = string.Format("{0}", routeData.Values["month"]);
+            }
+
+            if (string.IsNullOrEmpty(year) && N2.Find.CurrentPage is NewsContainer)
+            {
+                year = DateTime.Now.ToString("yyyy");
+                month = DateTime.Now.ToString("MM");
+            }
+
+            foreach (IGrouping<int, DateTime> item in Model.PublicationDates.OrderByDescending(x => x).GroupBy(time => time.Year))
+            {
+                var date = item.Select(x => new DateTime(x.Year, x.Month, 1)).First();
+                string css = "sideNavItem";
+                if (year == date.ToString("yyyy") && month == date.ToString("MM"))
+                {
+                    css += " current";
+                }
+        
+            <li>&gt; @Html.NewsArchiveActionLink(date, "yyyy", "yyyy", new { @class = css })</li>
+            }
+        }
+
+    </ul>
+</div>

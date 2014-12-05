@@ -1,0 +1,165 @@
+﻿@{
+    ViewBag.Title = "Listings";
+    Layout = "~/Areas/Admin/Views/Shared/Admin.cshtml";
+}
+@model ZeroWaste.SharePortal.Areas.Admin.Models.AdminListingViewModel
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
+
+<h4>Create listing</h4>
+@using (Html.BeginForm("New", "ListingManage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false)
+
+    <h2>Online Information</h2>
+    <table>
+        <tbody>
+            @if (Model.IsAdmin)
+            {
+                <tr>
+                    <th class="text-align-left" style="width: 20%;">
+                        <label>User</label>
+                    </th>
+                    <td colspan="3">
+                        @Html.DropDownListFor(m => m.UserId, Model.Users, "Select user")
+                    </td>
+                </tr>
+            }
+            <tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.OrganisationOrGroup)
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.OrganisationOrGroup)
+                    @Html.ValidationMessageFor(m => m.OrganisationOrGroup)
+                </td>
+            </tr>
+            <tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.City)
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.City)
+                    @Html.ValidationMessageFor(m => m.City)
+                </td>
+            </tr>
+            <tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.AboutGroup)
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.AboutGroup)
+                    @Html.ValidationMessageFor(m => m.AboutGroup)
+                </td>
+            </tr>
+            <tr>
+                <th class="text-align-left" style="width: 20%;">
+                    <label>Times/Access Hours</label>
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.ListingMessage)
+                    @Html.ValidationMessageFor(m => m.ListingMessage)
+                </td>
+            </tr>
+            <tr>
+                <th class="text-align-left">
+                    <label>Map address</label>
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.MapLocation)
+                    @Html.ValidationMessageFor(m => m.MapLocation)
+                </td>
+            </tr>
+            <tr>
+                <th class="text-align-left">
+                    <label>@Html.LabelFor(m => m.Location)</label>
+                </th>
+                <td colspan="3">
+                    @Html.TextBoxFor(m => m.Location, new { @class = "editor-for-dbgeography" })
+                    @Html.ValidationMessageFor(m => m.Location)
+                </td>
+            </tr>
+            <tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.Postcode)
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.Postcode)
+                    @Html.ValidationMessageFor(m => m.Postcode)
+                </td>
+            </tr>
+            <tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.WebLink)
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.WebLink)
+                    @Html.ValidationMessageFor(m => m.WebLink)
+                </td>
+            </tr>
+            @*<tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.FacebookLink)
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.FacebookLink)
+                    @Html.ValidationMessageFor(m => m.FacebookLink)
+                </td>
+            </tr>*@
+            <tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.Email)
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.Email)
+                </td>
+            </tr>
+            <tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.PhoneNumber)
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.PhoneNumber)
+                    @Html.ValidationMessageFor(m => m.PhoneNumber)
+                </td>
+            </tr>
+            <tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.ListingImageLink)
+                </th>
+                <td colspan="3">
+                    <img src="@Model.ListingImageLink" />
+                    @Html.TextBoxFor(m => m.Image, new { type = "file" })
+                    @Html.ValidationMessageFor(m => m.Image)
+                </td>
+            </tr>
+            <tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.ListingIconId)
+                </th>
+                <td colspan="3">
+                       @Html.DropDownListFor(m => m.ListingIconId, Model.ListingIconItems, "Select Listing Icon")
+                </td>
+            </tr>
+            @if (Model.IsAdmin)
+            {
+                <tr>
+                    <th class="text-align-left">
+                        <label>Approved?</label>
+                    </th>
+                    <td colspan="3">
+                        @Html.CheckBoxFor(m => m.IsApproved)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="buttonContainer">
+        <button type="submit" class="btn">Submit</button>
+        @Html.ActionLink("Cancel", "Index")
+    </div>
+}
+
+@section script {  
+    <script type="text/javascript" src="~/Scripts/EFSpatialGoogleMaps.js"></script>
+}

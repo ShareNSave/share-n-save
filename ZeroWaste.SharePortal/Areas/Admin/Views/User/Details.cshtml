@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "Listing Icons";
+    Layout = "~/Areas/Admin/Views/Shared/Admin.cshtml";
+}
+@using ZeroWaste.SharePortal.Models.Data
+@using N2.Web.UI.WebControls
+@using Telerik.Web.Mvc.UI
+@using BootstrapSupport
+@using ZeroWaste.SharePortal.Extensions
+@model ZeroWaste.SharePortal.Areas.Admin.Models.UserModel
+
+
+<h4>User Details</h4>
+@if (Model == null || Model.User == null)
+{
+    <p>User does not exist</p>
+    return;
+}
+<table>
+    <tbody>
+        <tr>
+            <th class="text-align-left">User id
+            </th>
+            <td colspan="4">
+                @Model.User.UserId
+            </td>
+        </tr>
+        <tr>
+            <th class="text-align-left">Login name
+            </th>
+            <td colspan="3">
+                @Model.User.Username
+            </td>
+        </tr>
+        <tr>
+            <th class="text-align-left">User name)
+            </th>
+            <td colspan="3">
+                @Model.User.Name
+            </td>
+        </tr>
+
+        <tr>
+            <th class="text-align-left">OrganisationOrGroup
+            </th>
+            <td colspan="3">
+                @Model.User.OrganisationOrGroup
+            </td>
+        </tr>
+
+        <tr>
+            <th class="text-align-left">GroupAddress
+            </th>
+            <td colspan="3">
+                @Model.User.GroupAddress
+            </td>
+        </tr>
+        @*
+        <tr>
+            <th class="text-align-left">AboutGroup
+            </th>
+            <td colspan="3">
+                @Model.User.AboutGroup
+            </td>
+        </tr>
+        *@
+        <tr>
+            <th class="text-align-left">City
+            </th>
+            <td colspan="3">
+                @Model.User.City
+            </td>
+        </tr>
+
+        <tr>
+            <th class="text-align-left">State
+            </th>
+            <td colspan="3">
+                @Model.User.State
+            </td>
+        </tr>
+
+        <tr>
+            <th class="text-align-left">Postcode
+            </th>
+            <td colspan="3">
+                @Model.User.Postcode
+            </td>
+        </tr>
+
+        <tr>
+            <th class="text-align-left">Phone
+            </th>
+            <td colspan="3">
+                @Model.User.Phone
+            </td>
+        </tr>
+
+        <tr>
+            <th class="text-align-left">Email
+            </th>
+            <td colspan="3">
+                @Model.User.Email
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+@Html.ActionLink("Edit", "Edit", new { id = @Model.User.UserId }, null)
+
+
+
+

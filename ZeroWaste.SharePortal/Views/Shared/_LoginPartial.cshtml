@@ -1,0 +1,20 @@
+﻿<div class="iconContainer">
+    @if (Request.IsAuthenticated)
+    {
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+        {
+            @Html.AntiForgeryToken()
+            <a href="javascript:document.getElementById('logoutForm').submit()" id="iconLogin" class="headerIcon"></a>
+            <div id="iconLoginText" class="iconText">
+                <span>Logout</span>
+            </div>
+        }
+    }
+    else
+    {
+        <a href="@Url.Action("Login", "Account")" id="iconLogin" class="headerIcon"></a>
+        <div id="iconLoginText" class="iconText">
+            <span>Login</span>
+        </div>
+    }
+</div>

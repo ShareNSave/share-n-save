@@ -1,0 +1,62 @@
+﻿@model ZeroWaste.SharePortal.Models.NewsContainerModel
+
+<h1>@Model.Title</h1>
+<div class="news-listing">
+    <div class="row">
+        <div class="span4">
+            <ul id="noticeListTab" class="noticeList nav nav-tabs">
+                @for (int index = 0; index < Model.News.Count; index++)
+                {
+                    var item = Model.News[index];
+                    var liClass = index == 0 ? "active" : string.Empty;
+                    <li class="@liClass">
+                        <a href="#article_@item.ID" data-toggle="tab">
+                            <h4>@String.Format("{0:dd MMM yyyy}", item.Published)</h4>
+                            @Html.Raw(item.Title)
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="span8">
+            <div class="tab-content">
+                @{ var tabAdded = false;}
+                @foreach (var item in Model.News)
+                {
+                    var tabClass = tabAdded ? "tab-pane fade" : "tab-pane fade in active";
+                    <div class="@tabClass" id="article_@item.ID">
+                        <h1>@item.Title</h1>
+                        @Html.Raw(item.Text)
+                    </div>
+                    tabAdded = true;
+                }
+            </div>
+            @{ Html.RenderPartial("Zones/Right"); }
+        </div>
+    </div>
+    <div class="row">
+        @* Move the left zone to a new row so that the tab-content wraps above the left zone content. *@
+        <div class="span4">
+            @{ Html.RenderPartial("Zones/Left"); }
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var article = getURLParameter("item");
+            if (article != null && article != '') {
+                var selector = "#noticeListTab li:eq(" + article + ") a";
+                $(selector).tab('show');
+            }
+
+        });
+        function getURLParameter(name) {
+            return decodeURI(
+                (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search) || [, null])[1]
+            );
+        }
+    </script>
+}

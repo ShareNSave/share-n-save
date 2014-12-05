@@ -1,0 +1,32 @@
+﻿@using BootstrapSupport
+@using ZeroWaste.SharePortal.Extensions
+@model ZeroWaste.SharePortal.Models.InstructionPageModel
+
+<div class="row">
+    <div class="span4">
+        @Content.Register.Title().Container("Content").Configure(e => e.CssClass = "entry-title").Display()
+        @Content.Display.Text
+    </div>
+    <div class="span4">
+        @using (Html.BeginForm("Index", "InstructionPage", FormMethod.Post, new { id = "instruction", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <h2>Step 1:</h2>
+            <p>First, let’s just check if you’re already in the system. If not we’ll get you set up now. Pop your email address in the box below.</p>
+            <fieldset>
+                @using (Html.ControlGroupFor(m => m.Email))
+                {
+                    <div class="controls">
+                        @Html.EditorFor(m => m.Email)
+                        @Html.ValidationMessageFor(m => m.Email, null, new { @class = "help-inline" })
+                    </div>
+                }
+                <!-- end control-group-->
+                <div class="buttonContainer">
+                    <button type="submit" class="btn">Submit</button>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>

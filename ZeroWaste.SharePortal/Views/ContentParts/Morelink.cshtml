@@ -1,0 +1,11 @@
+﻿@model ZeroWaste.SharePortal.Models.ContentPart
+@{ Content.Define(re =>
+    {
+        re.Title = "Read More link";
+        re.Url("Destination");
+        re.Text("Text");
+    });
+}
+<p>
+    <a class="moreLink" href="@Content.Data.Destination">@Content.Data.Text</a>
+</p>

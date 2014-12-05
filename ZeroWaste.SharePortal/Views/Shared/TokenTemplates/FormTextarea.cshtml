@@ -1,0 +1,14 @@
+﻿@model string
+@{
+    var tokenHelper = new N2Bootstrap.Library.Tokens.FreeTextareaTokenHelper(Html.DisplayableToken());
+}
+@if (!tokenHelper.IsValid)
+{
+    @Html.Partial("InvalidToken", tokenHelper)
+}
+else
+{
+    <span class="formfield formtextarea">
+        <textarea name="@tokenHelper.GetFormName()"></textarea>
+    </span>
+}

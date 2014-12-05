@@ -1,0 +1,20 @@
+﻿@model ZeroWaste.SharePortal.Models.ContentPart
+
+@{ Content.Define(re =>
+	   {
+		   re.Title = "3 Columns";
+		   re.IconUrl = "{IconsUrl}/text_columns.png";
+		   re.CheckBox("Separator", "Show separator");
+	   });
+}
+<div class=" clearfix @((bool)(Content.Data.Separator ?? false) ? "separator" : "")">
+	<div class="span4 col1">
+		@{ Html.DroppableZone("Left").Render(); }
+	</div>
+	<div class="span4 col2">
+		@{ Html.DroppableZone("Center").Render(); }
+	</div>
+	<div class="span4 col3">
+		@{ Html.DroppableZone("Right").Render(); }
+	</div>
+</div>

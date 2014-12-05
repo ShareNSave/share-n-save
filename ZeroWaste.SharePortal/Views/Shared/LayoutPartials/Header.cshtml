@@ -1,0 +1,105 @@
+﻿@using N2
+
+@{
+    Bundles.Reference("addthis");
+}
+
+<div class="main">
+    <div class="container">
+        <div class="row header headOne">
+            <div class="span12">
+                <div class="headerSec1">
+                    <div class="logoContainer">
+                        <a href="@Find.StartPage.Url">
+                            <img src="@Url.Content("~/Content/images/sharensave.png")" alt="Share N Save" width="184" height="52"></a>
+                    </div>
+                    <div class="navOne">
+                        @{ Html.RenderPartial("LayoutPartials/TopNavigation"); }
+                    </div>
+                </div>
+                
+                <button type="button" class="menuButton btn-navbar" data-toggle="collapse" data-target="#topmenu">
+                    Menu
+                </button>
+
+                <div class="nav-collapse collapse" id="topmenu">
+                    <div class="headerSec2">
+                        @Html.UnorderedList(Content.Traverse.StartPage.Children.Where(x => x.Details.ContainsKey("VisibleHeader") && (bool)x.Details["VisibleHeader"].Value), @<span>@Html.Link(item.Data)</span>, htmlAttributes: new { @class = "headerLinks" })
+                    </div>
+                    <div class="headerIcons headerSec3">
+                        <div class="iconContainer">
+                            <a href="@Find.StartPage.GetDetail("AboutUsUrl")" id="iconAbout" class="headerIcon"></a>
+                            <div id="iconAboutText" class="iconText">
+                                <span>About us & the site</span>
+                            </div>
+                        </div>
+                        @{ Html.RenderPartial("_LoginPartial"); }
+                        <!-- AddThis Button BEGIN -->
+                        <div class="addthis_toolbox social-group">
+                            <div class="custom_images">
+                            
+	                            <div class="iconContainer">
+	                                <a class="addthis_button_email headerIcon">
+	                                    <!-- <span id="iconEmail"></span> -->
+	                                </a>
+	                                <div id="iconEmailText" class="iconText">
+		                                <span>Share via email</span>
+		                            </div>
+	                            </div>
+	                            
+	                            <div class="iconContainer">
+	                                <a href="https://www.facebook.com/shareNsave" class="button_facebook headerIcon" target="_blank">
+	                                    <span id="iconFacebook"></span>
+	                                </a>
+	                                <div id="iconFacebookText" class="iconText">
+		                                <span>Visit us on Facebook</span>
+		                            </div>
+	                            </div>
+	                            
+	                            <div class="iconContainer">
+	                                <a href="https://twitter.com/sharensave" class="button_twitter headerIcon" target="_blank">
+	                                    <span id="iconTwitter"></span>
+	                                </a>
+	                                <div id="iconTweetText" class="iconText">
+		                                <span>Visit us on Twitter</span>
+		                            </div>
+	                            </div>
+                            
+                            </div>
+                        </div>
+                        <!-- AddThis Button END -->
+                    </div>
+                </div>
+
+                <div class="mobileIcons">
+                    <div class="iconContainer">
+                        <a href="@Find.StartPage.GetDetail("AboutUsUrl")" id="iconAboutMobile" class="headerIcon"></a>
+                    </div>
+                    @{ Html.RenderPartial("_LoginPartial"); }
+                    <!--
+<div class="searchLink">
+                        <a href="#" id="iconSearch" class="headerIcon"></a>
+                    </div>
+-->
+
+                </div>
+                @if (Content.Current.Page != null && Content.Current.Page.GetDetail("ShowPostcodeFilter", false))
+                {
+                    string postcode = string.Empty;
+                    if (Session != null && Session["postcode"] != null)
+                    {
+                        postcode = (string) Session["postcode"];
+                    }
+
+                    <div class="postcode">
+                        <form class="" action="">
+                            <input id="headerPostcode" type="text" name="postcode" value="@postcode">
+                            <label for="postcode">Enter postcode to find info for your area</label>
+                        </form>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

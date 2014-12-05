@@ -1,0 +1,55 @@
+﻿@using ZeroWaste.SharePortal.Utils
+@model ZeroWaste.SharePortal.Models.ExploreListingModel
+
+@{
+    Bundles.Reference("Scripts/Explore");
+}
+
+<div class="span12">
+    <div class="navTwo">
+        <ul id="filterOptions">
+            <li class="all active"><a id="filterAll" href="javascript:void(0)" class="all">All</a></li>
+            <li class="share"><a id="filterShare" href="javascript:void(0)" class="share">Share N Swap</a></li>
+            <li class="together"><a id="filterTogether" href="javascript:void(0)" class="together">Do Things Together</a></li>
+            <li class="borrow"><a id="filterBorrow" href="javascript:void(0)" class="borrow">Borrow stuff</a></li>
+        </ul>
+    </div>
+
+    <div class="iconCollection">
+
+        <ul id="exploreItems" class="ourHolder">
+            @{
+                var index = 1;
+            }
+            @foreach (var item in Model.List)
+{
+    item.Name = item.Name.Replace("\"", "");
+    string iconName = string.Empty;
+    string categoryName;
+    int catId;
+    var content = ListingHelper.CreatePopupHtmlContent(item, out categoryName, out catId, false);
+    if (item.ListingIcon != null && !string.IsNullOrWhiteSpace(item.ListingIcon.Name))
+    {
+        iconName = item.ListingIcon.Name;
+    }
+
+    <li class="item @categoryName @iconName" data-catId="@catId" data-id="id-@index" data-key="@item.ListingId" data-type="@categoryName" onclick="var _gaq = _gaq || []; _gaq.push(['_trackEvent', '@categoryName', '@iconName', '@item.Name']);">
+        <div data-toggle="popover" class="@categoryName detailPopover" data-content="@content">
+            <span>@item.Name</span>
+            <div class="icon"></div>
+        </div>
+    </li>
+    index++;
+}
+        </ul>
+        @if (Model.IsShowMore)
+        {
+            <div id="reveal" class="revealMore"><a id="showmore" href="javascript:void(0);">Show More</a></div>
+        }
+        <input id="currentNumber" type="hidden" value="@Model.CurrentResultNumber" />
+        <input id="categoryId" type="hidden" value="0" />
+        <input id="searchVal" type="hidden" value="" />
+        <input id="postcode" type="hidden" value="" />
+    </div>
+</div>
+

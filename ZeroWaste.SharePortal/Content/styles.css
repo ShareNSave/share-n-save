@@ -1,0 +1,1685 @@
+body {
+    background: #2F2F2F;
+    font-size: 12px;
+    line-height: 17px;
+}
+
+p, li {
+    font-size: 12px;
+    line-height: 17px;
+}
+
+.main {
+    background: #ffffff;
+    padding: 0 0 20px 0;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Droid Sans Mono', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1 {
+    font-size: 18px;
+    line-height: 30px;
+    margin: 0px 0 10px 0;
+}
+
+h2 {
+    font-size: 15px;
+    line-height: 22px;
+    margin: 0px 0 10px 0;
+}
+
+h3 {
+    font-size: 14px;
+    line-height: 19px;
+    margin: 0px 0 6px 0;
+}
+
+h4 {
+    font-size: 12px;
+    line-height: 17px;
+    margin: 0px 0 6px 0;
+}
+
+.row.header {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    /* height: 142px; */
+}
+
+.headerSec1 {
+    width: 184px;
+    float: left;
+    margin: 0 80px 20px 0;
+}
+
+.navOne {
+    width: 184px;
+}
+
+    .navOne ul {
+        list-style: none;
+        margin: 20px 0;
+        /* float:left; */
+        width: 100%;
+    }
+
+    .navOne li {
+        width: 50%;
+        border-top: 4px solid #9b9b9b;
+        float: left;
+        text-align: center;
+        font-family: 'Droid Sans Mono', sans-serif;
+        text-transform: uppercase;
+        font-size: 13px;
+    }
+
+        .navOne li:hover {
+        }
+
+        .navOne li a {
+            padding: 2px 0;
+            display: block;
+        }
+
+        .navOne li:hover, .navOne li.active {
+            border-top: 4px solid #2F2F2F;
+        }
+
+            .navOne li:hover a, .navOne li.active a {
+                color: #ffffff;
+                text-decoration: none;
+                background: #2F2F2F;
+            }
+
+.headerSec2 {
+    width: 440px;
+    float: left;
+}
+
+.headerLinks {
+    list-style: none;
+    margin: 0px;
+}
+
+    .headerLinks li {
+        float: left;
+        margin: 0 37px 0 0;
+        font-family: 'Droid Sans Mono', sans-serif;
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+
+.headerSec3 {
+    width: 246px;
+    float: right;
+}
+
+.navTwo {
+    width: 100%;
+    display: block;
+    clear: both;
+    height: 55px;
+}
+
+    .navTwo ul {
+        list-style: none;
+        margin: 0;
+        text-align: center;
+        width: 100%;
+        float: left;
+    }
+
+.ie7 .navTwo ul {
+    margin-top: -20px;
+}
+
+.navTwo li {
+    width: 25%;
+    margin: 0px;
+    padding: 0px;
+    float: left;
+    font-family: 'Droid Sans Mono', sans-serif;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+.navTwo .all a {
+    padding: 2px 0;
+    display: block;
+    border-top: 4px solid #2F2F2F;
+}
+
+.navTwo .share a {
+    padding: 2px 0;
+    display: block;
+    border-top: 4px solid #00cc66;
+}
+
+.navTwo .together a {
+    padding: 2px 0;
+    display: block;
+    border-top: 4px solid #ff9900;
+}
+
+.navTwo .borrow a {
+    padding: 2px 0;
+    display: block;
+    border-top: 4px solid #66ccff;
+}
+
+.navTwo .all a:hover, .navTwo .all.active a {
+    background: #2F2F2F;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.navTwo .share a:hover, .navTwo .share.active a {
+    background: #00cc66;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.navTwo .together a:hover, .navTwo .together.active a {
+    background: #ff9900;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.navTwo .borrow a:hover, .navTwo .borrow.active a {
+    background: #66ccff;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+#filterOptions {
+    margin-bottom: 30px;
+}
+
+.iconContainer {
+    width: 33px;
+    height: 33px;
+    position: relative;
+    margin: 0 0 0 16px;
+    float: left;
+}
+
+.searchLink {
+    width: 33px;
+    height: 33px;
+    position: absolute;
+    margin: 0;
+    top: 0px;
+    right: 4px;
+}
+
+.headerIcon {
+    float: left;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+}
+
+    .headerIcon:focus {
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        outline: none;
+    }
+
+.iconText {
+    width: 240px;
+    position: absolute;
+    text-align: center;
+    left: -104px;
+    top: 36px;
+}
+
+#iconAboutText {
+    display: none;
+}
+
+    #iconAboutText span {
+        color: #66ccff;
+        font-family: 'Droid Sans Mono', sans-serif;
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+
+a#iconAbout {
+    display: block;
+    width: 33px;
+    height: 33px;
+    background: url(images/header-icons.png) left top no-repeat;
+}
+
+    .current a#iconAbout, a#iconAbout:hover {
+        background: url(images/header-icons.png) left -50px no-repeat;
+    }
+
+        a#iconAbout:hover + #iconAboutText {
+            display: block;
+        }
+
+a#iconAboutMobile {
+    display: block;
+    width: 33px;
+    height: 33px;
+    background: url(images/header-icons.png) left top no-repeat;
+}
+
+    .current a#iconAboutMobile, a#iconAboutMobile:hover {
+        background: url(images/header-icons.png) left -50px no-repeat;
+    }
+
+
+#iconLoginText {
+    display: none;
+}
+
+    #iconLoginText span {
+        color: #66ccff;
+        font-family: 'Droid Sans Mono', sans-serif;
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+
+a#iconLogin {
+    display: block;
+    width: 33px;
+    height: 33px;
+    background: url(images/header-icons.png) -50px top no-repeat;
+}
+
+    .current a#iconLogin, a#iconLogin:hover {
+        background: url(images/header-icons.png) -50px -50px no-repeat;
+    }
+
+        a#iconLogin:hover + #iconLoginText {
+            display: block;
+        }
+
+
+
+#iconEmailText {
+    display: none;
+}
+#iconEmailText span {
+        color: #66ccff;
+        font-family: 'Droid Sans Mono', sans-serif;
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+
+a.addthis_button_email {
+    width: 33px;
+    height: 33px;
+    position: relative;
+    float: left;
+    background: url(images/header-icons.png) -102px top no-repeat;
+    cursor: pointer;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+}
+
+    a.addthis_button_email:hover {
+        background: url(images/header-icons.png) -102px -50px no-repeat;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        outline: none;
+    }
+
+    a.addthis_button_email:focus {
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        outline: none;
+    }
+
+
+    
+a.addthis_button_email:hover + #iconEmailText {
+            display: block;
+        }
+
+
+
+#iconFacebookText {
+    display: none;
+}
+#iconFacebookText span {
+        color: #66ccff;
+        font-family: 'Droid Sans Mono', sans-serif;
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+
+a.button_facebook {
+    width: 33px;
+    height: 33px;
+    position: relative;
+    float: left;
+    background: url(images/header-icons.png) -201px top no-repeat;
+    cursor: pointer;
+}
+
+    a.button_facebook:hover {
+        background: url(images/header-icons.png) -201px -50px no-repeat;
+    }
+
+a.button_facebook:hover + #iconFacebookText {
+            display: block;
+        }
+
+
+
+
+
+#iconTweetText {
+    display: none;
+}
+#iconTweetText span {
+        color: #66ccff;
+        font-family: 'Droid Sans Mono', sans-serif;
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+
+
+a.button_twitter {
+    width: 33px;
+    height: 33px;
+    position: relative;
+    float: left;
+    background: url(images/header-icons.png) -254px top no-repeat;
+    cursor: pointer;
+}
+
+    a.button_twitter:hover {
+        background: url(images/header-icons.png) -254px -50px no-repeat;
+    }
+
+
+a.button_twitter:hover + #iconTweetText {
+            display: block;
+        }
+
+
+
+
+
+#iconContactText {
+    display: none;
+}
+
+    #iconContactText a {
+        color: #66ccff;
+        font-family: 'Droid Sans Mono', sans-serif;
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+
+a#iconContact {
+    display: block;
+    width: 33px;
+    height: 33px;
+    background: url(images/header-icons.png) -153px top no-repeat;
+}
+
+    .current a#iconContact, a#iconContact:hover {
+        background: url(images/header-icons.png) -153px -50px no-repeat;
+    }
+
+        a#iconContact:hover + #iconContactText {
+            display: block;
+        }
+
+
+
+
+a#iconSearch {
+    display: block;
+    width: 33px;
+    height: 33px;
+    background: url(images/header-icons.png) -304px top no-repeat;
+}
+
+    a#iconSearch:hover, a#iconSearch.active {
+        background: url(images/header-icons.png) -304px -50px no-repeat;
+    }
+
+
+.search-container {
+    position: absolute;
+    width: 250px;
+    right: 0px;
+    top: 53px;
+}
+
+    .search-container label {
+        font-family: 'Droid Sans Mono', sans-serif;
+        text-transform: uppercase;
+        cursor: default;
+        line-height: 14px;
+        margin: 0 0 3px 0;
+    }
+
+    .search-container input[type="text"] {
+        vertical-align: bottom;
+        width: 214px;
+        border: none;
+        border-top: 4px solid #9B9B9B;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        border-radius: 0px;
+        margin: 0;
+        background-color: #e8e8e8;
+        padding: 4px 30px 4px 6px;
+    }
+
+
+.menuButton.btn-navbar {
+    display: none;
+}
+
+.mobileIcons {
+}
+
+    .mobileIcons .iconContainer {
+        display: none;
+    }
+
+
+
+
+
+
+
+
+#form-search {
+    position: relative;
+}
+
+.btn.search, .btn.search:hover {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    border: none;
+    text-shadow: none;
+    background-image: none;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    background: url(images/searchicon.png) center center no-repeat;
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+}
+
+.postcode {
+    position: absolute;
+    width: 370px;
+    height: 28px;
+    left: 284px;
+    top: 70px;
+    font-family: 'Droid Sans Mono', sans-serif;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+    .postcode label {
+        float: left;
+        vertical-align: bottom;
+        margin: 5px 0;
+        cursor: default;
+        font-size: 12px;
+    }
+
+    .postcode input[type="text"] {
+        vertical-align: bottom;
+        width: 50px;
+        border: none;
+        border-top: 4px solid #9B9B9B;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        border-radius: 0px;
+        margin: 0 0 0 10px;
+        background-color: #e8e8e8;
+        float: right;
+    }
+
+
+.ourHolder {
+    margin-left: -20px;
+    list-style: none;
+    zoom: 1;
+}
+
+    .ourHolder li {
+        width: 140px;
+        height: 115px;
+        float: left;
+        min-height: 1px;
+        margin: 0 0 20px 20px;
+        text-align: center;
+        font-family: 'Droid Sans Mono', sans-serif;
+        position: relative;
+    }
+
+        .ourHolder li .detailPopover:hover {
+            text-decoration: none;
+            color: #2F2F2F;
+        }
+
+        .ourHolder li .detailPopover span {
+            display: table-cell;
+            padding: 0 5px;
+            font-size: 11px;
+            line-height: 15px;
+            min-height: 45px;
+            height: 45px;
+            vertical-align: bottom;
+            width:150px;
+        }
+
+        .ourHolder li .detailPopover .icon {
+            width: 67px;
+            height: 67px;
+            margin: 6px auto;
+        }
+
+.footerContainer {
+    padding: 20px 0;
+}
+
+    .footerContainer p, .footerContainer a {
+        color: #999999;
+        font-family: 'Droid Sans Mono', sans-serif;
+    }
+
+        .footerContainer a:hover {
+            color: #ffffff;
+        }
+
+    .footerContainer ul {
+        list-style: none;
+        display: inline;
+    }
+
+    .footerContainer li {
+        text-align: right;
+        margin: 0 0 0 20px;
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+    }
+
+.footerLogo {
+    margin: 0 0 40px 0;
+    float: left;
+}
+
+.footerIcons {
+    float: right;
+    width: 490px;
+}
+
+
+
+
+.footerUseful {
+    width: 35px;
+    height: 35px;
+    background: url(images/footerIcons.png) -3px 5px no-repeat;
+    float: left;
+    margin: 0 40px;
+    position: relative;
+    text-align: center;
+}
+
+    .footerUseful:hover {
+        background: url(images/footerIcons.png) -3px -43px no-repeat;
+    }
+
+    .footerUseful span {
+        position: absolute;
+        bottom: -20px;
+        left: -100%;
+        width: 100px;
+    }
+
+.footerContact {
+    width: 35px;
+    height: 35px;
+    background: url(images/footerIcons.png) -60px 5px no-repeat;
+    float: left;
+    margin: 0 40px;
+    position: relative;
+    text-align: center;
+}
+
+    .footerContact:hover {
+        background: url(images/footerIcons.png) -60px -43px no-repeat;
+    }
+
+    .footerContact span {
+        position: absolute;
+        bottom: -20px;
+        left: -100%;
+        width: 100px;
+    }
+
+
+
+
+
+.footerMail {
+    width: 35px;
+    height: 35px;
+    background: url(images/footerIcons.png) -127px 5px no-repeat;
+    float: left;
+    margin: 0 30px;
+    cursor: pointer;
+}
+
+    .footerMail:hover {
+        background: url(images/footerIcons.png) -127px -44px no-repeat;
+    }
+    
+.footerIcons a.addthis_button_email, .footerIcons a.button_facebook, .footerIcons a.button_twitter {
+background: none;
+width:auto;
+}
+
+.footerfacebook {
+    width: 35px;
+    height: 35px;
+    float: left;
+    margin: 0 30px;
+    cursor: pointer;
+    background: url(images/footerIcons.png) -196px 5px no-repeat;
+}
+
+    .footerfacebook:hover {
+        background: url(images/footerIcons.png) -196px -45px no-repeat;
+    }
+
+.footertwitter {
+    width: 35px;
+    height: 35px;
+    float: left;
+    margin: 0 0 0 30px;
+    cursor: pointer;
+    background: url(images/footerIcons.png) -271px 5px no-repeat;
+}
+
+    .footertwitter:hover {
+        background: url(images/footerIcons.png) -271px -45px no-repeat;
+    }
+
+.span6.footerlinks {
+text-align: right;
+}
+
+.zwsa {
+	margin:0 0 20px 0;
+	display: block;
+}
+
+.copyright {
+color: #999999;
+font-family: 'Droid Sans Mono',sans-serif;
+}
+
+.detailPopover {
+    cursor: pointer;
+}
+
+
+/* icons */
+
+.together.TogetherCommGarden01 .icon {
+    background: url(images/icons/TogetherCommGarden01.png) center top no-repeat;
+}
+
+.together.TogetherCommGarden01:hover .icon, .together.TogetherCommGarden01.active .icon {
+    background: url(images/icons/TogetherCommGarden01.png) center bottom no-repeat;
+}
+
+.together.TogetherCommKitchen02 .icon {
+    background: url(images/icons/TogetherCommKitchen02.png) center top no-repeat;
+}
+
+.together.TogetherCommKitchen02:hover .icon, .together.TogetherCommKitchen02.active .icon {
+    background: url(images/icons/TogetherCommKitchen02.png) center bottom no-repeat;
+}
+
+.together.TogetherBackyard03 .icon {
+    background: url(images/icons/TogetherBackyard03.png) center top no-repeat;
+}
+
+.together.TogetherBackyard03:hover .icon, .together.TogetherBackyard03.active .icon {
+    background: url(images/icons/TogetherBackyard03.png) center bottom no-repeat;
+}
+
+.together.TogetherLand04 .icon {
+    background: url(images/icons/TogetherLand04.png) center top no-repeat;
+}
+
+.together.TogetherLand04:hover .icon, .together.TogetherLand04.active .icon {
+    background: url(images/icons/TogetherLand04.png) center bottom no-repeat;
+}
+
+.together.TogetherMensShed05 .icon {
+    background: url(images/icons/TogetherMensShed05.png) center top no-repeat;
+}
+
+.together.TogetherMensShed05:hover .icon, .together.TogetherMensShed05.active .icon {
+    background: url(images/icons/TogetherMensShed05.png) center bottom no-repeat;
+}
+
+.together.TogetherSharedSpace06 .icon {
+    background: url(images/icons/TogetherSharedSpace06.png) center top no-repeat;
+}
+
+.together.TogetherSharedSpace06:hover .icon, .together.TogetherSharedSpace06.active .icon {
+    background: url(images/icons/TogetherSharedSpace06.png) center bottom no-repeat;
+}
+
+.together.TogetherSkillShare07 .icon {
+    background: url(images/icons/TogetherSkillShare07.png) center top no-repeat;
+}
+
+.together.TogetherSkillShare07:hover .icon, .together.TogetherSkillShare07.active .icon {
+    background: url(images/icons/TogetherSkillShare07.png) center bottom no-repeat;
+}
+
+
+
+
+.borrow.BorrowBikeShare01 .icon {
+    background: url(images/icons/BorrowBikeShare01.png) center top no-repeat;
+}
+
+.borrow.BorrowBikeShare01:hover .icon, .borrow.BorrowBikeShare01.active .icon {
+    background: url(images/icons/BorrowBikeShare01.png) center bottom no-repeat;
+}
+
+.borrow.BorrowToolLibrary02 .icon {
+    background: url(images/icons/BorrowToolLibrary02.png) center top no-repeat;
+}
+
+.borrow.BorrowToolLibrary02:hover .icon, .borrow.BorrowToolLibrary02.active .icon {
+    background: url(images/icons/BorrowToolLibrary02.png) center bottom no-repeat;
+}
+
+.borrow.BorrowNappyLibrary03 .icon {
+    background: url(images/icons/BorrowNappyLibrary03.png) center top no-repeat;
+}
+
+.borrow.BorrowNappyLibrary03:hover .icon, .borrow.BorrowNappyLibrary03.active .icon {
+    background: url(images/icons/BorrowNappyLibrary03.png) center bottom no-repeat;
+}
+
+.borrow.BorrowToyLibrary04 .icon {
+    background: url(images/icons/BorrowToyLibrary04.png) center top no-repeat;
+}
+
+.borrow.BorrowToyLibrary04:hover .icon, .borrow.BorrowToyLibrary04.active .icon {
+    background: url(images/icons/BorrowToyLibrary04.png) center bottom no-repeat;
+}
+
+.share.ShareSwapBookSwap01 .icon {
+    background: url(images/icons/ShareSwapBookSwap01.png) center top no-repeat;
+}
+
+.share.ShareSwapBookSwap01:hover .icon, .share.ShareSwapBookSwap01.active .icon {
+    background: url(images/icons/ShareSwapBookSwap01.png) center bottom no-repeat;
+}
+
+.share.ShareSwapAutoPart02 .icon {
+    background: url(images/icons/ShareSwapAutoPart02.png) center top no-repeat;
+}
+
+.share.ShareSwapAutoPart02:hover .icon, .share.ShareSwapAutoPart02.active .icon {
+    background: url(images/icons/ShareSwapAutoPart02.png) center bottom no-repeat;
+}
+
+.share.ShareSwapRepairReuse03 .icon {
+    background: url(images/icons/ShareSwapRepairReuse03.png) center top no-repeat;
+}
+
+.share.ShareSwapRepairReuse03:hover .icon, .share.ShareSwapRepairReuse03.active .icon {
+    background: url(images/icons/ShareSwapRepairReuse03.png) center bottom no-repeat;
+}
+
+.share.ShareSwapClothes04 .icon {
+    background: url(images/icons/ShareSwapClothes04.png) center top no-repeat;
+}
+
+.share.ShareSwapClothes04:hover .icon, .share.ShareSwapClothes04.active .icon {
+    background: url(images/icons/ShareSwapClothes04.png) center bottom no-repeat;
+}
+
+.share.ShareSwapFruitVeg05 .icon {
+    background: url(images/icons/ShareSwapFruitVeg05.png) center top no-repeat;
+}
+
+.share.ShareSwapFruitVeg05:hover .icon, .share.ShareSwapFruitVeg05.active .icon {
+    background: url(images/icons/ShareSwapFruitVeg05.png) center bottom no-repeat;
+}
+
+.share.ShareSwapProduce06 .icon {
+    background: url(images/icons/ShareSwapProduce06.png) center top no-repeat;
+}
+
+.share.ShareSwapProduce06:hover .icon, .share.ShareSwapProduce06.active .icon {
+    background: url(images/icons/ShareSwapProduce06.png) center bottom no-repeat;
+}
+
+.revealMore {
+    display: block;
+    clear: both;
+    text-align: center;
+    margin: 0 0 20px 0;
+}
+
+    .revealMore a {
+        display: block;
+        padding: 40px 0 0 0;
+        background: url(images/arrowdown.png) center top no-repeat;
+        font-family: 'Droid Sans Mono', sans-serif;
+        text-transform: uppercase;
+    }
+
+        .revealMore a:hover {
+            background: url(images/arrowdown.png) center -66px no-repeat;
+            color: #2F2F2F;
+            text-decoration: none;
+        }
+
+.span4.col1 {
+    border-top: 4px solid #00cc66;
+    padding-top: 15px;
+}
+
+.span4.col2 {
+    border-top: 4px solid #ff9900;
+    padding-top: 15px;
+}
+
+.span4.col3 {
+    border-top: 4px solid #66ccff;
+    padding-top: 15px;
+}
+
+.noticeList {
+    list-style: none;
+    margin: 0px;
+}
+
+.noticeList li {
+    margin: 0 0 30px 0;
+    float: none;
+}
+
+.noticeList li.active a,
+.noticeList li.active a:hover,
+.noticeList li.active a:focus   {
+    color: #fff;
+    text-decoration:none;
+}
+
+a {
+	font-family: 'Droid Sans Mono', sans-serif;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+.moreLink {
+    font-family: 'Droid Sans Mono', sans-serif;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+/* Form styles */
+.control-group {
+    margin-bottom: 5px;
+}
+
+label {
+    font-family: 'Droid Sans Mono', sans-serif;
+    margin: 0 0 3px 0;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    background-color: #E8E8E8;
+    border: 1px solid #9B9B9B;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    font-size: 12px;
+    line-height: 17px;
+}
+
+input[type="text"] {
+    height: 16px;
+}
+
+input, textarea, .uneditable-input {
+    width: 286px;
+}
+
+.help-inline {
+    display: none;
+}
+
+.error .help-inline {
+    display: block;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #e80c4d;
+    font-weight: bold;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #e80c4d;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #e80c4d;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+/* -------------------         */
+
+
+
+.buttonContainer {
+    display: block;
+    text-align: right;
+    margin: 20px 0;
+}
+
+button.btn, input[type="submit"].btn {
+    background-image: none;
+    background-color: #58585a;
+    background: #58585a;
+    color: #ffffff;
+    font-family: 'Droid Sans Mono', sans-serif;
+    text-transform: uppercase;
+    padding: 10px 30px;
+    text-shadow: none;
+    border: none;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    font-size: 16px;
+}
+
+    button.btn:hover, input[type="submit"].btn:hover, button.btn:focus, input[type="submit"].btn:focus {
+        background: #2F2F2F;
+        color: #ffffff;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+
+
+/* Popovers */
+
+
+
+
+
+
+.popover {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 220px;
+    border: none;
+    border-top: 4px solid #9B9B9B;
+    z-index: 10000;
+    background-color: #9B9B9B;
+}
+
+    .popover.bottom .arrow {
+        border-bottom-color: #9B9B9B;
+    }
+
+    .popover .arrow, .popover .arrow::after {
+        border-bottom-color: #9B9B9B;
+    }
+
+    .popover.bottom .arrow:after {
+        top: 1px;
+        margin-left: -10px;
+        border-top-width: 0;
+        border-bottom-color: #9B9B9B;
+    }
+
+.popover-content {
+    padding: 0px;
+}
+.popover-content h4 {
+    margin: 15px 0 5px 0;
+    font-size:13px;
+    }
+
+.popover-content h4 span {
+    font-size: 90%;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+.popover-content a {
+	color:#2b2b2b;
+	text-decoration: underline;
+}
+
+.popover-content h4 a {
+    font-size: 90%;
+    text-transform: lowercase;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.popover-content .nav {
+padding-left:23px;
+}
+
+.popover-content .nav li.active a.popover-tab {
+    color:#fff;
+    text-decoration: none;
+    border-color: #000;
+}
+
+.popover-content .nav-tabs {
+    border-bottom: 1px solid #000;
+}
+
+.popover-content .nav a:hover {
+    border-color: #000;
+}
+
+.popover-title {
+    border-bottom: none;
+}
+
+.popover img {
+    margin: 0 0 6px 0;
+}
+
+.popover p {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    line-height: 17px;
+}
+
+.togetherPopover {
+    background: #ff9900;
+    color: #2F2F2F;
+    padding: 10px;
+}
+
+
+.borrowPopover {
+    background: #66ccff;
+    color: #2F2F2F;
+    padding: 10px;
+}
+
+.sharePopover {
+    background: #00cc66;
+    color: #2F2F2F;
+    padding: 10px;
+}
+
+.connectLink {
+    display: block;
+    min-height: 30px;
+    height: auto !important;
+    height: 30px;
+    margin-top:10px;
+}
+
+    .connectLink a {
+        background: url(images/connecticon.png) left center no-repeat;
+        padding: 5px 0 5px 30px;
+        float: right;
+        margin: 0 0 10px 0;
+        color: #2b2b2b;
+        text-decoration: underline;
+    }
+
+.archive ul, .usefulLinks {
+    list-style: none;
+    margin: 0px;
+}
+
+.archive li {
+    font-family: 'Droid Sans Mono', sans-serif;
+    font-size: 14px;
+    margin: 0 0 10px 0;
+}
+
+    .archive li a {
+        text-decoration: underline;
+    }
+
+.accordion-group {
+    border: none;
+}
+
+.accordion-heading {
+    margin: 0px;
+}
+
+    .accordion-heading .accordion-toggle {
+        background: #E8E8E8;
+        padding: 8px;
+    }
+
+        .accordion-heading .accordion-toggle:hover, .accordion-heading .accordion-toggle.active:hover {
+            background: #2F2F2F;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .accordion-heading .accordion-toggle.active {
+            background: #ffffff;
+        }
+
+.accordion-inner {
+    border: none;
+    padding: 10px 8px 9px 8px;
+}
+
+.usefulLinks li {
+    font-family: 'Droid Sans Mono', sans-serif;
+    text-transform: uppercase;
+    margin: 0 0 12px 0;
+}
+
+    .usefulLinks li a {
+        text-decoration: underline;
+    }
+
+.iframe-rwd {
+    position: relative;
+    padding-bottom: 65.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+    .iframe-rwd iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+#map_canvas {
+	margin: 0 0 20px 0;
+    width: 100%;
+    height: 500px;
+    margin-bottom: 20px;
+}
+
+    #map_canvas .borrowPopover, #map_canvas .sharePopover, #map_canvas .togetherPopover {
+        -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #map_canvas .popover-content img {
+        margin: 0 0 6px 0;
+    }
+
+    #map_canvas .popover-content h2 {
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 17px;
+    }
+
+.boxPoint {
+    display: block;
+    height: 10px;
+    background: url(images/point.png) center top no-repeat;
+    border-bottom: 4px solid #9B9B9B;
+}
+legend {
+	font-family: 'Droid Sans Mono',sans-serif;
+	font-size: 18px;
+}
+
+.headerSec3 {
+	display: block;
+}
+
+@media (min-width: 1200px) {
+	.ourHolder li {
+width: 150px;}
+
+input, textarea, .uneditable-input {
+width: 355px;
+}
+	
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+	
+	.ourHolder li {
+width: 166px;
+}
+input[type="text"], select, textarea, .input-xlarge {
+	width: 286px;
+}
+.nav-collapse, .nav-collapse.collapse {
+height: auto !important;
+position: absolute;
+left: 268px;
+top: 0px;
+}
+.headerSec2 {
+	width:177px;
+}
+.headerSec2 ul li {
+	margin:0 0 10px 0;
+}
+.postcode {
+	top:80px;
+	left:268px;
+}
+	
+}
+@media (max-width: 767px) {
+
+    body {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .main {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .row.header {
+        height: auto;
+    }
+
+    .headerSec1 {
+        width: 100%;
+        display: block;
+        float: none;
+    }
+
+    .logoContainer {
+        width: 184px;
+        margin: 0 auto;
+    }
+
+    .headerOne .headerSec2 {
+        display: none;
+    }
+
+    .headerSec3 {
+        width: 100px;
+        margin-top: 20px;
+    }
+
+    .postcode {
+        position: static;
+        width: 100%;
+        display: block;
+        clear: both;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+        .postcode label, .postcode input[type="text"] {
+            float: none;
+            margin: 0px 0 5px 0;
+        }
+
+    a#iconAbout:hover + #iconAboutText {
+        display: none;
+    }
+
+    a#iconSearch:hover + #iconSearchText {
+        display: none;
+    }
+
+    .ourHolder {
+        margin-left: 0px;
+    }
+
+        .ourHolder li {
+            width: 33%;
+            margin-left: 0px;
+        }
+
+    .search-container {
+        position: static;
+        width: 100%;
+        display: block;
+        clear: both;
+    }
+
+        .search-container label {
+            display: block;
+        }
+
+        .search-container input[type="text"] {
+            width: 90%;
+            padding: 4px 5%;
+        }
+
+    .footerContainer {
+        padding: 20px;
+    }
+
+    .navOne ul {
+        float: left;
+    }
+
+    .navTwo ul {
+        margin: 20px 0;
+    }
+
+
+
+    .headOne .menuButton.btn-navbar {
+        display: block;
+    }
+
+
+    .mobileIcons .iconContainer {
+        display: inline-block;
+        width: 33px;
+        margin-right:6px;
+    }
+
+    .nav-collapse {
+        position: relative;
+    }
+
+    .mobileIcons {
+        position: absolute;
+        width: 80px;
+        height: 33px;
+        right: 0px;
+        top: 68px;
+    }
+
+    .searchLink {
+        position: static;
+        float: right;
+    }
+
+	.navTwo .all a {
+	    padding: 4px 0 8px 0;
+	}
+	
+	.navTwo .share a {
+	    padding: 4px 0 8px 0;
+	}
+	
+	.navTwo .together a {
+	    padding: 4px 0 8px 0;
+	}
+	
+	.navTwo .borrow a {
+	    padding: 4px 0 8px 0;
+	}
+	
+	.navOne li a {
+        padding: 4px 0 8px 0;
+    }
+    .headerSec3 {
+	    display: none;
+    }
+
+    .headOne .menuButton.btn-navbar {
+        clear: both;
+        display: block;
+        width: 100%;
+        border: none;
+        background-image: none;
+        background-color: #9B9B9B;
+        color: #ffffff;
+        margin: 0 0 7px 0;
+        font-family: 'Droid Sans Mono', sans-serif;
+        text-transform: uppercase;
+        line-height: 33px;
+    }
+
+    .headerSec2, .headerSec3 {
+        width: 100%;
+        margin-top: 0px;
+    }
+
+    .iconContainer {
+        margin: 0px;
+        width: 100%;
+        height: auto;
+    }
+
+    .headerIcon {
+        display: none;
+    }
+
+    .headerLinks li {
+        float: none;
+        display: block;
+    }
+
+    a#iconAbout, a#iconUseful, a#iconContact {
+        display: none;
+    }
+
+    #iconAboutText, #iconUsefulText, #iconContactText {
+        display: block;
+        position: static;
+        float: none;
+        width: 100%;
+    }
+
+        #iconAboutText a, #iconLoginText a, #iconUsefulText a, #iconContactText a {
+            display: block;
+            padding: 8px;
+        }
+        
+        
+a#iconLogin {
+	display: block;
+} 
+
+#iconLoginText {
+	display: none !important;
+}       
+        
+        
+        
+
+    .headerLinks {
+        text-align: center;
+    }
+
+        .headerLinks li {
+            margin: 0px;
+        }
+
+            .headerLinks li a {
+                padding: 8px;
+                display: block;
+            }
+
+    .headTwo .navTwo {
+        display: none;
+    }
+
+    #iconAboutText a, #iconLoginText a, #iconUsefulText a, #iconContactText a {
+        color: #2f2f2f;
+    }
+
+        #iconAboutText a:hover, #iconLoginText a:hover, #iconUsefulText a:hover, #iconContactText a:hover, #iconAboutText a:focus, #iconLoginText a:focus, #iconUsefulText a:focus, #iconContactText a:focus {
+            color: #66ccff;
+        }
+
+    .footerLogo {
+        margin: 0 0 20px 0;
+        float: none;
+        display: block;
+    }
+
+    .footerIcons {
+        float: none;
+        display: block;
+        clear: both;
+        margin-bottom: 20px;
+    }
+
+    .footerContainer .addthis_toolbox.social-group {
+        display: inline-block;
+    }
+
+    .footerUseful, .footerContact {
+        margin-bottom: 30px;
+    }
+    
+    .footerContainer ul {
+display: block;
+margin: 10px 0;
+}
+    .footerContainer li {
+	    margin: 0;
+    }
+    
+    .span6.footerlinks {
+	    text-align: left;
+    }
+    .zwsa {
+margin: 10px 0 20px 0;
+display: block;
+}
+    .copyright {
+	    display: block;
+    }
+    .buttonContainer {
+	    text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .navOne {
+        width: 160px;
+    }
+
+    .navTwo {
+        height: 160px;
+    }
+
+    .headerSec2, .headerSec3 {
+        width: 100%;
+    }
+
+    .iconContainer {
+        margin: 0px;
+    }
+
+    .navTwo li {
+        width: 100%;
+        display: block;
+        float: none;
+        margin: 0 0 5px 0;
+    }
+
+    .postcode {
+        width: 200px;
+        margin: 20px auto;
+    }
+
+    .popover {
+        width: 200px;
+    }
+
+    .ourHolder {
+        width: 100% !important;
+    }
+
+        .ourHolder li {
+            width: 50%;
+            margin-left: 0px;
+        }
+
+    .footerIcons {
+        width: 100%;
+    }
+
+    .footerMail {
+        margin: 0 5px 0 0;
+    }
+
+    .footerfacebook {
+        margin: 0 10px 0 0;
+    }
+
+    .footertwitter {
+        margin: 0 0px 0 0;
+    }
+
+    .footerContainer ul {
+        float: left;
+        margin: 15px 0;
+    }
+
+    .footerContainer li {
+        margin: 0 15px 0 0px;
+    }
+}
+
+
+

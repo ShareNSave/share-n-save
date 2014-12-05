@@ -1,0 +1,14 @@
+﻿@model string
+@{
+    var tokenHelper = new N2Bootstrap.Library.Tokens.FileTokenHelper(Html.DisplayableToken());
+}
+@if (!tokenHelper.IsValid)
+{
+    @Html.Partial("InvalidToken", tokenHelper)
+}
+else
+{
+    <span class="formfield formfile">
+        <input name="@tokenHelper.GetFormName()" type="file" />
+    </span>
+}

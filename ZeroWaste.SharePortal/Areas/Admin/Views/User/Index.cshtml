@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Listing icons";
+    Layout = "~/Areas/Admin/Views/Shared/Admin.cshtml";
+}
+@using ZeroWaste.SharePortal.Models.Data
+@using N2.Web.UI.WebControls
+@using Telerik.Web.Mvc.UI
+@model List<UserProfile>
+
+<h2>Users</h2>
+ 
+<div class="boxPoint"></div>
+
+@Html.Telerik().Grid(Model).Name("Grid").Columns(columns =>
+{
+    columns.Bound(p => p.Name).Filterable(true);
+    columns.Bound(p => p.Username).Filterable(true);
+    
+    columns.Bound(p => p.OrganisationOrGroup).Filterable(true);
+    columns.Bound(p => p.GroupAddress).Filterable(true);
+    columns.Bound(p => p.City).Filterable(true);
+    columns.Bound(p => p.State).Filterable(true);
+    columns.Bound(p => p.Postcode).Filterable(true);
+    //columns.Bound(p => p.AboutGroup).Filterable(true);
+
+
+    columns.Template(x => string.Format("{0} | {1} | {2}", Html.ActionLink("Edit", "Edit", new { id = x.UserId }, null), Html.ActionLink("Details", "Details", "User", new { userId = x.UserId }, null), "<a style=\"color: red;\" href=\"javascript:deleteEntity('/Admin/User/Delete?id=" + x.UserId + "');\">Delete</a>")).Title("Operate").Width(150);
+
+}).Groupable().Pageable(paging =>paging.PageSize(25)).Filterable().Sortable().Resizable(resize => resize.Columns(true)).Scrollable(c => c.Enabled(true).Height(340));
+
+    @Html.Telerik().ScriptRegistrar()

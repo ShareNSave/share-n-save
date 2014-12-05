@@ -1,0 +1,147 @@
+﻿@{
+    ViewBag.Title = "Listing Icons";
+    Layout = "~/Areas/Admin/Views/Shared/Admin.cshtml";
+}
+@model ZeroWaste.SharePortal.Areas.Admin.Models.UserModel
+
+<h4>Edit User</h4>
+@if (Model == null || Model.User == null)
+{
+    <p>User does not exist</p>
+    return;
+}
+@using (Html.BeginForm("Edit", "User", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false)
+    <table>
+        <tbody>
+            <tr>
+                <th class="text-align-left">User id
+                </th>
+                <td colspan="4">
+                    @Model.User.UserId
+                    @Html.HiddenFor(x => x.User.UserId)
+                </td>
+            </tr>
+            @if (Model.Listings != null)
+            {
+                <tr>
+                    <th class="text-align-left">Listings
+                    </th>
+                    <td colspan="4">
+                        @Html.ActionLink("Listings", "Index", "ListingManage", new { userId = Model.User.UserId }, null)
+                    </td>
+                </tr>
+            }
+            <tr>
+                <th class="text-align-left">Login name
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.User.Username)
+                    @Html.ValidationMessageFor(m => m.User.Username)
+
+                </td>
+            </tr>
+
+            <tr>
+                <th class="text-align-left">User name
+                </th>
+                <td colspan="3">
+                    @Model.User.Name
+                    @Html.HiddenFor(x => x.User.Name)
+                </td>
+            </tr>
+            <tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.User.OrganisationOrGroup)
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.User.OrganisationOrGroup)
+                    @Html.ValidationMessageFor(m => m.User.OrganisationOrGroup)
+                </td>
+            </tr>
+
+            <tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.User.GroupAddress)
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.User.GroupAddress)
+                    @Html.ValidationMessageFor(m => m.User.GroupAddress)
+                </td>
+            </tr>
+
+
+            @*<tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.User.AboutGroup)
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.User.AboutGroup)
+                    @Html.ValidationMessageFor(m => m.User.AboutGroup)
+                </td>
+            </tr>
+            *@
+
+            <tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.User.City)
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.User.City)
+                    @Html.ValidationMessageFor(m => m.User.City)
+                </td>
+            </tr>
+
+            <tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.User.State)
+                </th>
+                <td colspan="3">
+                    <div class="controls">
+                    @Html.DropDownListFor(m => m.State, Model.States, "Please select");
+
+                    @Html.ValidationMessageFor(m => m.User.State)
+                </td>
+            </tr>
+
+            <tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.User.Postcode)
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.User.Postcode)
+                    @Html.ValidationMessageFor(m => m.User.Postcode)
+                </td>
+            </tr>
+
+            <tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.User.Phone)
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.User.Phone)
+                    @Html.ValidationMessageFor(m => m.User.Phone)
+                </td>
+            </tr>
+
+            <tr>
+                <th class="text-align-left">
+                    @Html.LabelFor(m => m.User.Email)
+                </th>
+                <td colspan="3">
+                    @Html.EditorFor(m => m.User.Email)
+                    @Html.ValidationMessageFor(m => m.User.Email)
+                </td>
+            </tr>
+
+
+
+        </tbody>
+    </table>
+    <div class="buttonContainer">
+        <button type="submit" class="btn">Submit</button>
+        @Html.ActionLink("Cancel", "Index")
+    </div>
+}

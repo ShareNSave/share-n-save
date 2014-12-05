@@ -1,0 +1,194 @@
+﻿@using BootstrapSupport
+@using ZeroWaste.SharePortal.Extensions
+@model ZeroWaste.SharePortal.Models.ListingViewModel
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var obj = $("#icon-zone");
+            obj.css("width", "67px");
+            obj.css("height", "67px");
+            $("#ListingIconId").change(function () {
+                var value = $(this).val();
+                if (value && value != "") {
+                    var iconName = $("#ListingIconId option:selected").data("icon");
+                    var style = "url(/content/images/icons/" + iconName + ".png) center top no-repeat";
+                    //var img = "<img src='/Content/icons/" + text + ".png' />";
+                    obj.css("background", style);
+                    obj.show();
+                }
+                else {
+                    $("#icon-zone").hide();
+                }
+            });
+        });
+    </script>
+}
+<div class="row">
+    <div class="span8">
+        <div class="row">
+            <div class="span4">
+                @Content.Register.Title().Container("Content").Configure(e => e.CssClass = "entry-title").Display()
+                @Content.Display.Text
+            </div>
+
+            <div class="span4">
+                @using (Html.BeginForm("Index", "CreateListing", FormMethod.Post, new { id = "createlisting", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <h2>Step 3:</h2>
+                    <h2><strong>Information for Public Listing.</strong></h2>
+                    <p>Info for the public - this will be shown to everyone on the site.</p>
+                    <fieldset>
+                        @*<div class="span4">
+                        @Content.Display.HeadTextForAdmin
+                        @using (Html.ControlGroupFor(m => m.Name))
+                        {
+                            @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+                            <div class="controls">
+                                @Html.EditorFor(m => m.Name, new { @class = "input-xlarge" })
+                                @Html.ValidationMessageFor(m => m.Name, null, new { @class = "help-inline" })
+                            </div>
+                        }
+
+                        @using (Html.ControlGroupFor(m => m.Street))
+                        {
+                            @Html.LabelFor(m => m.Street, new { @class = "control-label" })
+                            <div class="controls">
+                                @Html.EditorFor(m => m.Street, new { @class = "input-xlarge" })
+                                @Html.ValidationMessageFor(m => m.Street, null, new { @class = "help-inline" })
+                            </div>
+                        }
+
+                        @using (Html.ControlGroupFor(m => m.State))
+                        {
+                            @Html.LabelFor(m => m.State, new { @class = "control-label" })
+                            <div class="controls">
+                                @Html.EnumDropDownListFor(m => m.State, new { @class = "input-xlarge", placeholder = "Enter State" })
+                                @Html.ValidationMessageFor(m => m.State, null, new { @class = "help-inline" })
+                            </div>
+                        }*@
+
+                        @using (Html.ControlGroupFor(m => m.OrganisationOrGroup))
+                        {
+                            @Html.LabelFor(m => m.OrganisationOrGroup, new { @class = "control-label" })
+                            <div class="controls">
+                                @Html.EditorFor(m => m.OrganisationOrGroup, new { @class = "input-xlarge" })
+                                @Html.ValidationMessageFor(m => m.OrganisationOrGroup, null, new { @class = "help-inline" })
+                            </div>
+                        }
+                    @using (Html.ControlGroupFor(m => m.MapLocation))
+                    {
+                        @Html.LabelFor(m => m.MapLocation, new { @class = "control-label" })
+                        <div class="controls">
+                            @Html.EditorFor(m => m.MapLocation, new { @class = "input-xlarge" })
+                            @Html.ValidationMessageFor(m => m.MapLocation, null, new { @class = "help-inline" })
+                        </div>
+                    }
+                    @using (Html.ControlGroupFor(m => m.City))
+                    {
+                        @Html.LabelFor(m => m.City, new { @class = "control-label" })
+                        <div class="controls">
+                            @Html.EditorFor(m => m.City, new { @class = "input-xlarge" })
+                            @Html.ValidationMessageFor(m => m.City, null, new { @class = "help-inline" })
+                        </div>
+                    }
+                    @using (Html.ControlGroupFor(m => m.Postcode))
+                    {
+                        @Html.LabelFor(m => m.Postcode, new { @class = "control-label" })
+                        <div class="controls">
+                            @Html.EditorFor(m => m.Postcode, new { @class = "input-xlarge" })
+                            @Html.ValidationMessageFor(m => m.Postcode, null, new { @class = "help-inline" })
+                        </div>
+                    }
+                        @using (Html.ControlGroupFor(m => m.AboutGroup))
+                        {
+                            @Html.LabelFor(m => m.AboutGroup, new { @class = "control-label" })
+                            <div class="controls">
+                                @Html.EditorFor(m => m.AboutGroup, new { @class = "input-xlarge" })
+                                @Html.ValidationMessageFor(m => m.AboutGroup, null, new { @class = "help-inline" })
+                            </div>
+                        }
+                        @using (Html.ControlGroupFor(m => m.ListingMessage))
+                        {
+                            @Html.LabelFor(m => m.ListingMessage, new { @class = "control-label" })
+                            <div class="controls">
+                                @Html.EditorFor(m => m.ListingMessage, new { @class = "input-xlarge" })
+                                @Html.ValidationMessageFor(m => m.ListingMessage, null, new { @class = "help-inline" })
+                            </div>
+                        }
+                        @using (Html.ControlGroupFor(m => m.WebLink))
+                        {
+                            @Html.LabelFor(m => m.WebLink, new { @class = "control-label" })
+                            <div class="controls">
+                                @Html.EditorFor(m => m.WebLink, new { @class = "input-xlarge" })
+                                @Html.ValidationMessageFor(m => m.WebLink, null, new { @class = "help-inline" })
+                            </div>
+                        }
+                       @* @using (Html.ControlGroupFor(m => m.FacebookLink))
+                        {
+                            @Html.LabelFor(m => m.FacebookLink, new { @class = "control-label" })
+                            <div class="controls">
+                                @Html.EditorFor(m => m.FacebookLink, new { @class = "input-xlarge" })
+                                @Html.ValidationMessageFor(m => m.FacebookLink, null, new { @class = "help-inline" })
+                            </div>
+                        }*@
+                        @using (Html.ControlGroupFor(m => m.Email))
+                        {
+                            @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                            <div class="controls">
+                                @Html.EditorFor(m => m.Email, new { @class = "input-xlarge" })
+                                @Html.ValidationMessageFor(m => m.Email, null, new { @class = "help-inline" })
+                            </div>
+                        }
+                        @using (Html.ControlGroupFor(m => m.PhoneNumber))
+                        {
+                            @Html.LabelFor(m => m.PhoneNumber, new { @class = "control-label" })
+                            <div class="controls">
+                                @Html.EditorFor(m => m.PhoneNumber, new { @class = "input-xlarge" })
+                                @Html.ValidationMessageFor(m => m.PhoneNumber, null, new { @class = "help-inline" })
+                            </div>
+                        }
+                        @using (Html.ControlGroupFor(m => m.Image))
+                        {
+                            @Html.LabelFor(m => m.Image, new { @class = "control-label" })
+                            <p>
+                                Choose a photo or logo. We’ll add a default one for you, but you can choose your own and upload it if you like. Just make sure it’s smaller than 1mb and that it’s landscape (long ways) not portrait. Don’t worry too much, we’ll resize it
+automatically. If you don’t like the way it looks then you can come back and change your image any time.
+                            </p>
+                            <div class="imagPreview">
+                                @* <img src="content/img/imagesize.png" alt="imagesize" width="190" height="140">*@
+                            </div>
+                            <div class="controls">
+                                @Html.TextBoxFor(m => m.Image, new { @class = "input-xlarge", type = "file", name = "datasize", size = "30" })
+                                @Html.ValidationMessageFor(m => m.Image, null, new { @class = "help-inline" })
+                            </div>
+                        }
+
+                        <div class="control-group">
+                            @Html.LabelFor(m => m.ListingIconId, new { @class = "control-label" })
+                            <p>What category does your activity or event fall under? Not sure? Pick one and we’ll help you figure it out when we get your application.</p>
+                            <div class="controls">
+                                <select data-val="true" data-val-number="The field Listing Icon must be a number." data-val-required="The Listing Icon field is required." id="ListingIconId" name="ListingIconId" class="valid">
+                                    <option value="">Select Listing Icon</option>
+                                    @foreach (var item in Model.ListingIconItems)
+                                    {
+                                        <option value="@item.ListingIconId" data-icon="@item.Name">@item.Description</option>
+                                    }
+                                </select>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.ListingIconId, null, new { @class = "help-inline" })
+                            <div id="icon-zone" style="display: none">
+                            </div>
+                        </div>
+                        <div class="buttonContainer">
+                            <button type="submit" class="btn">Submit</button>
+                        </div>
+                    </fieldset>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

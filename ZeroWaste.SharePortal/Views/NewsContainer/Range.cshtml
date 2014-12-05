@@ -1,0 +1,12 @@
+﻿@model ZeroWaste.SharePortal.Models.NewsContainerModel
+<ul class="noticeList">
+    @foreach (var item in Model.News)
+    {
+        <li>
+            <h4>@String.Format("{0:dd MMM yyyy}", item.Published)</h4>
+            <h2><a href="@item.Url">@Html.Raw(item.Title)</a></h2>
+            <p>@Html.Raw(item.Summary)</p>
+            <p><a href="@item.Url" class="moreLink">READ MORE</a></p>
+        </li>
+    }
+</ul>

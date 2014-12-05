@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Listing categories";
+    Layout = "~/Areas/Admin/Views/Shared/Admin.cshtml";
+}
+@using ZeroWaste.SharePortal.Models.Data
+@using N2.Web.UI.WebControls
+@using Telerik.Web.Mvc.UI
+@model List<ListingCategory>
+ 
+<h2>Listing Categories</h2>
+
+@Html.Telerik().Grid(Model).Name("Grid").Columns(columns =>
+{
+    columns.Bound(p => p.Id).Filterable(true);
+    columns.Bound(p => p.Name).Filterable(true);
+    columns.Template(x => string.Format("{0} | {1}", Html.ActionLink("Edit", "Edit", new { id = x.Id }, null), Html.ActionLink("Listing icons", "Index", "ListingIcon", new { categoryId = x.Id }, null))).Title("Operate").Width(150);
+
+}).Groupable().Pageable(paging =>paging.PageSize(25)).Filterable().Sortable().Resizable(resize => resize.Columns(true)).Scrollable(c => c.Enabled(true).Height(340));
+
+    @Html.Telerik().ScriptRegistrar()

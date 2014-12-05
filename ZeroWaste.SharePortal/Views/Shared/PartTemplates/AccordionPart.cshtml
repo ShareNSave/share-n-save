@@ -1,0 +1,26 @@
+﻿@using ZeroWaste.SharePortal.Models
+@using ZeroWaste.SharePortal.Models.Parts
+@using Lucene.Net.Documents
+@using N2.Collections
+<div class="accordion" id="accordion2">
+    @{
+        int index = 0;
+        foreach (var item in Content.Current.Item.GetChildren(new TypeFilter(typeof(AccordionPart.AccordionItem))).Cast<AccordionPart.AccordionItem>())
+        {
+            index++;
+
+        <div class="accordion-group">
+            <h2 class="accordion-heading">
+                <a class="accordion-toggle active" href="#collapse_@index" data-toggle="collapse" data-parent="#accordion2">
+                    @item.ItemTitle
+                </a>
+            </h2>
+            <div class="accordion-body collapse" id="collapse_@index">
+                <div class="accordion-inner">
+                    @Html.Raw(item.Text)
+                </div>
+            </div>
+        </div>
+        }
+    }
+</div>
